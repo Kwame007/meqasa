@@ -1,113 +1,346 @@
-import Image from "next/image";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
 
-export default function Home() {
+import { siteConfig } from "@/config/site"
+import { API_ENDPOINT } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
+import { Card } from "@/components/ui/card"
+import { AgentLogoCarousel } from "@/components/agent-logo-carousel"
+import BannerGroup from "@/components/banner-group"
+import FeaturedProperty from "@/components/featured-property"
+import { SearchFilter } from "@/components/filter/search-filter"
+import MarketNews from "@/components/market-news"
+import { MobileAppBanner } from "@/components/mobile-app-banner"
+import PropertyGuide from "@/components/property-guide"
+import PropertyListings from "@/components/property-listings"
+import RecommendedLocation from "@/components/recommended-location"
+
+async function getFeaturedProperties(): Promise<FeaturedPropertiesType[]> {
+  try {
+    const res = await fetch(`${API_ENDPOINT}/projects`, {
+      next: { revalidate: 60 },
+    })
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data")
+    }
+
+    return await res.json()
+  } catch (error: any) {
+    throw new Error(`Failed to parse response: ${error.message}`)
+  }
+}
+
+async function getLatestBlogs(): Promise<BlogPost[]> {
+  try {
+    const res = await fetch(`${API_ENDPOINT}/blogs`, {
+      next: { revalidate: 60 },
+    })
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data")
+    }
+
+    return await res.json()
+  } catch (error: any) {
+    throw new Error(`Failed to parse response: ${error.message}`)
+  }
+}
+
+async function getLatestListings(): Promise<PropertyListing[]> {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/listing?_start=0&_limit=10`)
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch latest listings")
+    }
+
+    const listings = (await response.json()) as PropertyListing[]
+    return listings
+  } catch (error: any) {
+    throw new Error(`Failed to parse response: ${error.message}`)
+  }
+}
+
+async function getRecommendedLocations(): Promise<RecommendedLocationType[]> {
+  try {
+    const res = await fetch(`${API_ENDPOINT}/neighborhoods`)
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch data")
+    }
+
+    const locations = await res.json()
+    return locations
+  } catch (error: any) {
+    throw new Error(`Failed to parse response: ${error.message}`)
+  }
+}
+
+export default async function Home() {
+  const featuredProperties = await getFeaturedProperties()
+  const blogs = await getLatestBlogs()
+  const listings = await getLatestListings()
+  const recommendedLocations = await getRecommendedLocations()
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+    <>
+      <Card className="relative max-h-[70px] overflow-hidden rounded-none border-0 lg:hidden">
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          width={400}
+          height={200}
+          alt="ad"
+          src="https://dve7rykno93gs.cloudfront.net/pieoq/1467979242.webp"
+          sizes="100wv"
+          className="w-full object-cover"
         />
+      </Card>
+
+      <Card className="relative hidden h-[320px] overflow-hidden rounded-none border-0 lg:block">
+        <Link
+          href="https://meqasa.com/follow-ad-1883?u=https://oneelm.quaorealty.com"
+          target="_blank"
+          rel="noreferrer"
+          className="relative block h-full w-full"
+        >
+          <Image
+            alt="Luxury Real Estate Property"
+            src="https://dve7rykno93gs.cloudfront.net/assets4/img/hero-image.jpg"
+            fill
+            sizes="100wv"
+            className="object-cover"
+            priority // Load this image with priority for faster rendering.
+          />
+        </Link>
+      </Card>
+
+      <aside className="mt-8 px-3">
+        <div className="mx-auto my-3 hidden max-w-fit items-center gap-8 rounded-lg px-2 py-1.5 hover:text-b-accent lg:flex">
+          {siteConfig.popularLocations.map((str, i) => (
+            <Badge
+              className="flex h-[25px]  items-center bg-[#F0F6FF] px-2 text-[10px] font-bold uppercase text-slate-500 shadow-sm"
+              key={i}
+            >
+              <Link href={"/"}>{str}</Link>
+            </Badge>
+          ))}
+        </div>
+
+        <SearchFilter />
+      </aside>
+      <section className="mt-8 hidden w-full px-3 lg:block">
+        {/* @ts-ignore */}
+        <AgentLogoCarousel />
+      </section>
+      <div className="container mt-8 flex px-0 lg:gap-8">
+        <section className="w-full lg:max-w-[1143px] ">
+          <Card className="relative mx-3 h-[200px] overflow-hidden rounded-xl border-0  lg:hidden">
+            <Link
+              href="https://meqasa.com/follow-ad-1883?u=https://oneelm.quaorealty.com"
+              target="_blank"
+              rel="noreferrer"
+              className="absolute inset-0 z-10 "
+            >
+              <Image
+                alt="Luxury Real Estate Property"
+                src="https://dve7rykno93gs.cloudfront.net/assets4/img/hero-image.jpg"
+                fill
+                sizes="calc(100vw - 32px)"
+                className="object-cover"
+                priority // Load this image with priority for faster rendering.
+              />
+            </Link>
+          </Card>
+
+          {/* @ts-ignore */}
+          <BannerGroup />
+
+          <section className="mt-8 border-b lg:mt-20 lg:border-0">
+            <div className="px-4 lg:p-0">
+              <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
+                Featured Properties
+              </h2>
+            </div>
+            <div className="overflow-y-hidden overflow-x-scroll">
+              <div className="mt-4 grid grid-flow-col grid-cols-[0px_1fr_1fr_1fr_1fr_4px] gap-3 overflow-x-scroll lg:mt-8 lg:grid-flow-row lg:grid-cols-[repeat(2,minmax(0,1fr))] lg:gap-8">
+                <div className="mb-4 lg:hidden" />
+                {featuredProperties.map((property) => (
+                  <div className="mb-4 p-1.5" key={property.href}>
+                    {/* @ts-ignore */}
+                    <FeaturedProperty property={property} />
+                  </div>
+                ))}
+                <div className="mb-4 w-1 lg:hidden" />
+              </div>
+            </div>
+          </section>
+
+          <section className="mt-8 grid border-b lg:mt-20 lg:grid-cols-[736px_minmax(0,1fr)] lg:gap-8 lg:border-0">
+            <div>
+              {" "}
+              <div className="flex items-center justify-between px-4 lg:border-b lg:p-0 lg:pb-4">
+                <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
+                  Property Guides & Insights
+                </h2>
+                <Link href="/blog" className="font-bold text-b-blue">
+                  See all
+                </Link>
+              </div>
+              <div className="lg: mt-6 grid gap-8 px-4 lg:px-0">
+                {blogs.map((blog) => (
+                  <React.Fragment key={blog.href}>
+                    {/* @ts-ignore */}
+                    <PropertyGuide {...blog} />
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+            <aside className="hidden lg:block">
+              <h3 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:mb-8 lg:text-[23px] lg:font-extrabold">
+                Market News
+              </h3>
+              <div>
+                {Array.from({ length: 3 }).map((item, index) => (
+                  <React.Fragment key={index}>
+                    <MarketNews index={index} />
+                  </React.Fragment>
+                ))}
+              </div>
+            </aside>
+          </section>
+          <section className="mt-8 w-full border-b pb-8 lg:mt-20 lg:border-0 lg:py-0 lg:pb-0 ">
+            <div className="mb-8 flex items-center justify-between px-4 lg:p-0 lg:pb-4">
+              <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
+                Latest Listings
+              </h2>
+              <Link href="/blog" className="font-bold text-b-blue">
+                See all
+              </Link>
+            </div>
+            {/* @ts-ignore */}
+            <PropertyListings listings={listings} />
+          </section>
+
+          <section className="mt-16 bg-slate-50 py-8  lg:py-10">
+            <div className="px-0 lg:container">
+              <div className="grid grid-cols-[1fr_70px] items-center  justify-between gap-8 px-4 lg:p-0">
+                <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
+                  Choice Neighborhoods
+                </h2>
+                <Link
+                  href="/blog"
+                  className="block justify-self-end font-bold text-b-blue"
+                >
+                  See all
+                </Link>
+              </div>
+              <div className="hidden lg:block">
+                <p className="max-w-[700px] text-b-accent">
+                  These neighborhoods are highly desirable for business, living,
+                  and pleasure. Find out why!
+                </p>
+              </div>
+
+              <div className="mt-8">
+                <div className="overflow-x-scroll ">
+                  <div className="grid grid-cols-[0px_1fr_1fr_1fr_1fr_4px] gap-3 overflow-x-scroll py-4 lg:grid-cols-4 lg:gap-8">
+                    <div className="w-1 lg:hidden" />
+                    {recommendedLocations.map((item) => (
+                      <RecommendedLocation {...item} key={item.href} />
+                    ))}
+                    <div className="w-1 lg:hidden" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <aside className="my-8 grid items-center gap-6 px-4 text-sm leading-6 text-b-muted lg:text-base">
+            <>
+              <div>
+                <p>
+                  MeQasa is the number one real estate website in Ghana with
+                  over 40,000 properties listed from over 230 developers and
+                  over 2500 agents. MeQasa plays a crucial role in Ghana&apos;s
+                  real estate sector by offering property seekers more choice
+                  and property sellers more leads than any other site.
+                </p>
+                <p>
+                  Looking for{" "}
+                  <Link
+                    href="/property-for-sale-in-accra"
+                    className="font-semibold text-b-blue no-underline"
+                  >
+                    properties for sale{" "}
+                  </Link>
+                  or{" "}
+                  <Link
+                    href="/property-for-rent-in-accra"
+                    className="font-semibold text-b-blue no-underline"
+                  >
+                    properties for rent
+                  </Link>
+                  ? Whatever your property needs, you&apos;re on the right
+                  website.
+                </p>
+                <p>
+                  From{" "}
+                  <Link
+                    href="/house-for-sale-in-accra"
+                    className="font-semibold text-b-blue no-underline"
+                  >
+                    houses in Accra{" "}
+                  </Link>
+                  to{" "}
+                  <Link
+                    href="/apartment-for-sale-in-east-legon"
+                    className="font-semibold text-b-blue no-underline"
+                  >
+                    apartments in East Legon
+                  </Link>
+                  , houses in Spintex to beach houses in Takoradi, MeQasa has
+                  the right property for you.
+                </p>
+              </div>
+              <div>
+                <p>
+                  Ghana&apos;s real estate landscape has evolved into a vast and
+                  exciting space over the last decade. While there is still a
+                  large under-supply of housing as compared to the needs of the
+                  population, Ghana&apos;s capital city Accra offers an
+                  impressive range of property that spans across all property
+                  types and prices.
+                </p>
+              </div>
+            </>
+          </aside>
+          <MobileAppBanner />
+        </section>
+        <aside className="hidden w-[225px] lg:flex lg:flex-col lg:gap-6">
+          {Array.from({ length: 7 }).map((_, index) => (
+            <React.Fragment key={index}>
+              <Card className="relative h-[450px] max-h-[450px] w-[225px] overflow-hidden">
+                <Link
+                  href="https://meqasa.com/follow-ad-1883?u=https://oneelm.quaorealty.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative block h-full w-full"
+                >
+                  <Image
+                    alt="Luxury Real Estate Property"
+                    src="https://dve7rykno93gs.cloudfront.net/pieoq/56799905"
+                    fill
+                    sizes="225px"
+                    className="h-full w-full object-cover"
+                    priority // Load this image with priority for faster rendering.
+                  />
+                </Link>
+              </Card>
+            </React.Fragment>
+          ))}
+        </aside>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    </>
+  )
 }

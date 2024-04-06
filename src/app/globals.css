@@ -2,32 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 346.8 77.2% 49.8%;
+    --radius: 0.5rem;
+    /* custom brand colors */
+    --brand-primary: 349, 98%, 66%;
+    --brand-primary-dark: 349, 74%, 60%;
+    --brand-primary-light: 349, 100%, 97%;
+    --brand-secondary: 240, 18%, 18%;
+    --brand-secondary-light: 240, 5%, 92%;
+    --brand-secondary-dark: 240, 19%, 16%;
+    --brand-accent: 233, 53%, 23%;
+    --brand-gray: 0, 0%, 97%;
+    --brand-blue: 221, 100%, 56%;
+    --brand-blue-light: 220.9, 100%, 95.68627450980391%;
+    --brand-blue-dark: 221, 80%, 51%;
+    --brand-muted: 231, 15%, 54%;
+    --brand-muted-dark: 232, 15%, 54%;
+    --brand-border: 233, 15%, 88%;
+    --brand-border-light: 233, 13%, 88%;
+    --brand-badge-muted: 236, 13%, 79%;
+    --brand-badge-primary: 236, 13%, 79%;
+    --brand-badge-verified: 161, 76%, 41%;
+    --brand-badge-ongoing: 44, 100%, 52%;
+    --brand-badge-completed: 137, 63%, 39%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.dark {
+  --background: 20 14.3% 4.1%;
+  --foreground: 0 0% 95%;
+  --card: 24 9.8% 10%;
+  --card-foreground: 0 0% 95%;
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 346.8 77.2% 49.8%;
+  --primary-foreground: 355.7 100% 97.3%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 12 6.5% 15.1%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 85.7% 97.3%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 346.8 77.2% 49.8%;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  .stick {
+    display: flex;
+    transition: all 500ms ease-in;
+  }
+
+  .list::before {
+    color: #1b2359;
+    content: counters(item, ".") " ";
+    font-size: 14px;
+    font-weight: 600;
+    margin: 2px 0;
   }
 }
