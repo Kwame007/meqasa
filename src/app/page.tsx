@@ -133,7 +133,7 @@ export default async function Home() {
         {/* @ts-ignore */}
         <AgentLogoCarousel />
       </section>
-      <div className="container mt-8 flex px-0 lg:gap-8">
+      <div className="mt-8 flex px-0 lg:mx-auto lg:max-w-[1400px] lg:gap-8">
         <section className="w-full lg:max-w-[1143px] ">
           <Card className="relative mx-3 h-[200px] overflow-hidden rounded-xl border-0  lg:hidden">
             <Link
@@ -223,7 +223,7 @@ export default async function Home() {
           </section>
 
           <section className="mt-16 bg-slate-50 py-8  lg:py-10">
-            <div className="px-0 lg:container">
+            <div className="px-0 lg:mx-auto lg:max-w-[1400px]">
               <div className="grid grid-cols-[1fr_70px] items-center  justify-between gap-8 px-4 lg:p-0">
                 <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
                   Choice Neighborhoods
