@@ -121,6 +121,9 @@ devDependencies:
   '@ianvs/prettier-plugin-sort-imports':
     specifier: ^4.2.1
     version: 4.2.1(prettier@2.8.8)
+  '@types/google-libphonenumber':
+    specifier: ^7.4.30
+    version: 7.4.30
   '@types/node':
     specifier: ^20
     version: 20.0.0
@@ -1759,6 +1762,10 @@ packages:
     dependencies:
       tslib: 2.6.2
     dev: false
+
+  /@types/google-libphonenumber@7.4.30:
+    resolution: {integrity: sha512-Td1X1ayRxePEm6/jPHUBs2tT6TzW1lrVB6ZX7ViPGellyzO/0xMNi+wx5nH6jEitjznq276VGIqjK5qAju0XVw==}
+    dev: true
 
   /@types/google.maps@3.55.2:
     resolution: {integrity: sha512-JcTwzkxskR8DN/nnX96Pie3gGN3WHiPpuxzuQ9z3516o1bB243d8w8DHUJ8BohuzoT1o3HUFta2ns/mkZC8KRw==}
