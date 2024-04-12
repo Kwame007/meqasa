@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 
 import { siteConfig } from "@/config/site"
 import { Button } from "@/components/ui/button"
@@ -30,6 +31,7 @@ import { PriceInput } from "@/components/filter/custom-price-input"
 import { Icons } from "@/components/icons"
 
 export function SearchFilter() {
+  const navigate = useRouter()
   const newLocal =
     "relative mt-3 hidden h-[60px] w-full items-center rounded-xl bg-white shadow-sm lg:flex"
   return (
@@ -84,7 +86,13 @@ export function SearchFilter() {
           </div>
 
           <TabsContent value="buy">
-            <form action="">
+            <form
+              action=""
+              onSubmit={(e) => {
+                e.preventDefault()
+                navigate.push("/results/1")
+              }}
+            >
               <Input
                 type="radio"
                 value="sale"
@@ -160,7 +168,13 @@ export function SearchFilter() {
             </form>
           </TabsContent>
           <TabsContent value="rent">
-            <form action="">
+            <form
+              action=""
+              onSubmit={(e) => {
+                e.preventDefault()
+                navigate.push("/results/1")
+              }}
+            >
               <Input
                 type="radio"
                 value="rent"
@@ -381,7 +395,13 @@ export function SearchFilter() {
             </form>
           </TabsContent>
           <TabsContent value="land">
-            <form action="">
+            <form
+              action=""
+              onSubmit={(e) => {
+                e.preventDefault()
+                navigate.push("/results/1")
+              }}
+            >
               <Input
                 type="radio"
                 value="land"
