@@ -14,7 +14,7 @@ import {
 } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button, buttonVariants } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -28,7 +28,6 @@ import ContactFixed from "@/components/contact-fixed"
 import { DynamicCarousel } from "@/components/DynamicCarousel"
 import { Icons } from "@/components/icons"
 import { PropertyUnitCard } from "@/components/property-unit-card"
-import PageWrapper from "@/components/wrapper"
 import LeaseOptions from "@/app/[propertyID]/components/lease-options"
 import MortgageCalculator from "@/app/[propertyID]/components/mortgage-calculator"
 import { PropertyDescription } from "@/app/[propertyID]/components/project-description"
@@ -37,7 +36,8 @@ import { PropertyDetails } from "@/app/[propertyID]/components/property-details"
 import { ImageGrid } from "@/app/[propertyID]/image-grid"
 
 // Constants for styles and dimensions
-const BADGE_CLASS = " bg-[#F0F6FF] shadow-sm uppercase text-blue-500 no-wrap"
+const BADGE_CLASS =
+  " bg-[#F0F6FF] shadow-sm uppercase text-blue-500 max-w-full"
 
 export default async function Page({
   params,
@@ -81,7 +81,6 @@ export default async function Page({
     }
   }
   const [propertyDetails] = await getPropertyDetails(params.propertyID)
-  console.log(propertyDetails)
 
   //TODO: STREAM SIMILAR LISTINGS WITH SUSPENSE
   const similarListings = await getSimilarListings(params.propertyID)
@@ -146,7 +145,7 @@ export default async function Page({
         />
       </header>
 
-      <div className="grid text-b-accent  lg:mt-6 lg:container lg:grid-cols-[2fr,1fr] lg:gap-8 lg:px-0">
+      <div className="grid text-b-accent  lg:container lg:mt-6 lg:grid-cols-[2fr,1fr] lg:gap-8 lg:px-0">
         <div className="p-4 lg:hidden">
           <h2 className="text-[19px] font-bold lg:text-2xl">
             {propertyDetails?.title}
@@ -188,7 +187,7 @@ export default async function Page({
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex-wra flex items-center gap-2">
                 {generateBadges(badgesData, propertyMappingsData)}
               </div>
             </div>
@@ -404,7 +403,7 @@ export default async function Page({
         </aside>
       </div>
 
-      <aside className="hidden px-0 py-8  lg:block lg:container">
+      <aside className="hidden px-0 py-8  lg:container lg:block">
         {propertyDetails.type === "sale" && (
           <>
             <h4 className="mb-6 text-xl font-bold text-b-accent">
@@ -424,7 +423,7 @@ export default async function Page({
         </div>
       </aside>
 
-      <section className="pt- my-6 grid max-w-full border-b-2 pb-4  lg:mb-0 lg:mt-16 lg:container lg:border-0">
+      <section className="pt- my-6 grid max-w-full border-b-2 pb-4  lg:container lg:mb-0 lg:mt-16 lg:border-0">
         {similarListings.length !== 0 && (
           <div className="flex items-center justify-between px-4 lg:p-0 lg:pb-4">
             <h5 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
@@ -441,7 +440,10 @@ export default async function Page({
             <Carousel className="lg:mx-w-full w-full ">
               <CarouselContent>
                 {similarListings.map((item) => (
-                  <CarouselItem key={item.id} className="basis-2/4 lg:basis-1/4">
+                  <CarouselItem
+                    key={item.id}
+                    className="basis-2/4 lg:basis-1/4"
+                  >
                     <div className="p-1">
                       <PropertyUnitCard {...item} key={item.id} />
                     </div>
