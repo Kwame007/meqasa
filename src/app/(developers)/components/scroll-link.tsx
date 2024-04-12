@@ -7,7 +7,7 @@ type AnchorProps = Omit<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
   keyof LinkProps
 >
-type ScrollLinkProps = AnchorProps & LinkProps & PropsWithChildren
+type ScrollLinkProps = AnchorProps & LinkProps
 // component definition
 export const ScrollLink = ({ children, ...props }: ScrollLinkProps) => {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
