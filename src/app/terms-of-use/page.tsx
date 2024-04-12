@@ -17,7 +17,7 @@ export default function page() {
             }}
           />
         </div>
-        <div className="md:container min-h-screen p-4 ">
+        <div className="min-h-screen p-4 md:container ">
           <header>
             <h1 className="mb-6 border-b pb-5 text-xl font-bold leading-tight tracking-tighter text-b-accent md:text-3xl md:font-extrabold">
               Terms of Use
@@ -161,14 +161,15 @@ export default function page() {
                           prohibited on the Services, unless you have received
                           express written permission from meQasa. As a limited
                           exception, publicly available search engines and
-                          similar Internet navigation tools ("Search Engines")
-                          may query the Services and provide an index with links
-                          to the Services' Web pages, only to the extent such
-                          unlicensed "fair use" is allowed by applicable
-                          copyright law. Search Engines are not permitted to
-                          query or search information protected by a security
-                          verification system ("captcha") which limits access to
-                          human users.
+                          similar Internet navigation tools (&quot;Search
+                          Engines&quot;) may query the Services and provide an
+                          index with links to the Services&apos; Web pages, only
+                          to the extent such unlicensed &quot;fair use&quot; is
+                          allowed by applicable copyright law. Search Engines
+                          are not permitted to query or search information
+                          protected by a security verification system
+                          (&quot;captcha&quot;) which limits access to human
+                          users.
                         </li>
                       </ol>
                       <ol
@@ -457,21 +458,21 @@ export default function page() {
                     className="list mt-3 inline-grid grid-cols-[32px_auto] text-sm font-normal leading-7 text-b-muted"
                     style={{ counterIncrement: "item" }}
                   >
-                    meqasa provides the services "as is," "with all faults" and
-                    "as available," and the entire risk as to satisfactory
-                    quality, performance, accuracy, and effort is with you. to
-                    the maximum extent permitted by applicable law, meqasa and
-                    its suppliers make no representations, warranties, or
-                    conditions, express or implied. meqasa and its suppliers
-                    expressly disclaim any and all warranties or conditions,
-                    express, statutory, and implied, including without
-                    limitation (a) warranties or conditions of merchantability,
-                    fitness for a particular purpose, workmanlike effort,
-                    accuracy, title, quiet enjoyment, no encumbrances, no liens
-                    and non-infringement, (b) warranties or conditions arising
-                    through course of dealing or usage of trade, and (c)
-                    warranties or conditions of uninterrupted or error-free
-                    access or use.
+                    meqasa provides the services &quot;as is,&quot; &quot;with
+                    all faults&quot; and &quot;as available,&quot; and the
+                    entire risk as to satisfactory quality, performance,
+                    accuracy, and effort is with you. to the maximum extent
+                    permitted by applicable law, meqasa and its suppliers make
+                    no representations, warranties, or conditions, express or
+                    implied. meqasa and its suppliers expressly disclaim any and
+                    all warranties or conditions, express, statutory, and
+                    implied, including without limitation (a) warranties or
+                    conditions of merchantability, fitness for a particular
+                    purpose, workmanlike effort, accuracy, title, quiet
+                    enjoyment, no encumbrances, no liens and non-infringement,
+                    (b) warranties or conditions arising through course of
+                    dealing or usage of trade, and (c) warranties or conditions
+                    of uninterrupted or error-free access or use.
                   </li>
                 </ol>
               </li>
@@ -627,7 +628,7 @@ export default function page() {
                 </ol>
               </li>
             </ol>
-            <div className="wi-full flex justify-end mt-2">
+            <div className="wi-full mt-2 flex justify-end">
               <small className="text-b-muted">- Updated July 2013</small>
             </div>
           </section>

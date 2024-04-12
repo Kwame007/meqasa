@@ -302,7 +302,7 @@ export default async function page({ params: { agentID } }: Params) {
                   luxury, security and perfection is the hallmark of our
                   company. Our experience at The White Group Company is
                   indisputable, from design cutting edge facilities created in
-                  collaboration with some of the world's most renowned
+                  collaboration with some of the world&apos;s most renowned
                   architects to the flawless interior design exclusively for our
                   clients. We are committed to providing unparalleled quality
                   service with the highest degree of professionalism. At The

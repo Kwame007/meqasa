@@ -1,4 +1,3 @@
-
 import {
   Accordion,
   AccordionContent,
@@ -118,7 +117,7 @@ export default function page() {
                       <li>
                         Click on Sign up at the top right corner of the page.
                       </li>
-                      <li>Choose "Register to list properties".</li>
+                      <li>Choose `Register to list properties`.</li>
                       <li> Select the account type you would like to use.</li>
                       <li> Provide your phone number. </li>
                       <li> Accept the terms of use. </li>
@@ -179,7 +178,7 @@ export default function page() {
 
               <AccordionItem value="item-10">
                 <AccordionTrigger className="gap-6 text-justify text-base font-semibold">
-                  What Does "Verified Agent" Mean?{" "}
+                  What Does &quot;Verified Agent&quot; Mean?{" "}
                 </AccordionTrigger>
                 <AccordionContent className="mt-4 leading-6 text-b-muted">
                   A verified agent has furnished meQasa with additional proof of
@@ -199,9 +198,9 @@ export default function page() {
                   <span className="block py-1 pl-6">
                     <ul className="list-disc">
                       <li>
-                        Valid Driver's License, Passport or National ID card
-                        bearing the same name as the one indicated on meqasa.com
-                        account.
+                        Valid Driver&apos;s License, Passport or National ID
+                        card bearing the same name as the one indicated on
+                        meqasa.com account.
                       </li>
                     </ul>
                   </span>
@@ -214,7 +213,7 @@ export default function page() {
                     </ul>
                   </span>
                   On meQasa a Certificate of Commencement or Incorporation earns
-                  the "verified plus" badge: Verified plus badge.
+                  the &quot;verified plus&quot; badge: Verified plus badge.
                 </AccordionContent>
               </AccordionItem>
 
@@ -240,24 +239,25 @@ export default function page() {
                 <AccordionContent className="mt-4 leading-6 text-b-muted">
                   Short stays are not the easiest to come by in Ghana and are
                   often gone before they can be listed online. However when we
-                  do have some available, you can find them by selecting "1-to-6
-                  months" from the "Rent period" drop-down menu on the search
-                  results page or be sure to go to the "Short Lease" tab when
-                  you start your search from the meQasa home page.
+                  do have some available, you can find them by selecting
+                  &quot;1-to-6 months&quot; from the &quot;Rent period&quot;
+                  drop-down menu on the search results page or be sure to go to
+                  the &quot;Short Lease&quot; tab when you start your search
+                  from the meQasa home page.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4">
                 <AccordionTrigger className="gap-6 text-justify text-base font-semibold">
                   {" "}
-                  I'm finding a lot of amazing houses and apartments and want to
-                  save them for later review. Is that possible?
+                  I&apos;m finding a lot of amazing houses and apartments and
+                  want to save them for later review. Is that possible?
                 </AccordionTrigger>
                 <AccordionContent className="mt-4 leading-6 text-b-muted">
-                  Definitely! You can favourite properties that you like in
-                  order to return to them easily. If you see a house, apartment
-                  or office you are interested in just click the star icon and
-                  it will save. On property results, the star is near the bottom
+                  Definitely! You can favorite properties that you like in order
+                  to return to them easily. If you see a house, apartment or
+                  office you are interested in just click the star icon and it
+                  will save. On property results, the star is near the bottom
                   right corner of the result. On property pages the star is
                   below the photos display. You may be prompted to create or log
                   in to your personal account.
@@ -267,8 +267,8 @@ export default function page() {
               <AccordionItem value="item-13">
                 <AccordionTrigger className="gap-6 text-justify text-base font-semibold">
                   {" "}
-                  I'm not a fan of working with agents due to past experience.
-                  Can't I just deal with the homeowner?
+                  I&apos;m not a fan of working with agents due to past
+                  experience. Can&apos;t I just deal with the homeowner?
                 </AccordionTrigger>
                 <AccordionContent className="mt-4 leading-6 text-b-muted">
                   We understand your frustration. The house hunting process can
@@ -286,8 +286,8 @@ export default function page() {
               <AccordionItem value="item-14">
                 <AccordionTrigger className="gap-6 text-justify text-base font-semibold">
                   Its amazing that the website offers so many property options
-                  to home seekers but I'd like my properties to be seen more
-                  prominently. How can I make that happen?
+                  to home seekers but I&apos;d like my properties to be seen
+                  more prominently. How can I make that happen?
                 </AccordionTrigger>
                 <AccordionContent className="mt-4 leading-6 text-b-muted">
                   Amidst thousands of houses, apartments and office listings
@@ -321,9 +321,9 @@ export default function page() {
                         <span className="text-sm font-bold">
                           Featured Property:{" "}
                         </span>{" "}
-                        As part of our "Agent List Feature" offer, you get to
-                        select one of your listings to be featured on the meQasa
-                        homepage.{" "}
+                        As part of our &quot;Agent List Feature&quot; offer, you
+                        get to select one of your listings to be featured on the
+                        meQasa homepage.{" "}
                       </li>
                     </ul>
                   </span>
@@ -351,17 +351,17 @@ export default function page() {
               <span className="font-bold">Disclaimer: </span> meQasa.com uses
               the various documents required from agencies and agents (Business
               Incorporation Certificates, Certificate to Commence Business,
-              Driver's License, Passport or National ID card) to verify that our
-              agents are who they say they are. However, it is the
+              Driver&apos;s License, Passport or National ID card) to verify
+              that our agents are who they say they are. However, it is the
               responsibility of the authorities that issue these documents to
               validate them. meQasa only uses these documents to support the
               credibility of our agents to reassure seekers the agents have
               proven by the documents issued to them that they are legitimate.
               Verification does not constitute an endorsement of an agent nor
-              does it provide a guarantee of the agent's/agency's business
-              practices. Always satisfy yourself that the person/persons you
-              contract with is/are professional and ethical before paying out
-              any money.
+              does it provide a guarantee of the agent&apos;s/agency&apos;s
+              business practices. Always satisfy yourself that the
+              person/persons you contract with is/are professional and ethical
+              before paying out any money.
             </p>
           </div>
         </div>

@@ -1,8 +1,8 @@
 "use client"
 
-import { Search } from "lucide-react"
-import Link from "next/link"
 import React from "react"
+import Link from "next/link"
+import { Search } from "lucide-react"
 
 import {
   CommandDialog,
@@ -10,10 +10,16 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList
+  CommandList,
 } from "@/components/ui/command"
 
-export default function SearchInput({ data,path }: { data: any[],path:string }) {
+export default function SearchInput({
+  data,
+  path,
+}: {
+  data: any[]
+  path: string
+}) {
   const [open, setOpen] = React.useState(false)
 
   function handleOpen() {
@@ -36,7 +42,7 @@ export default function SearchInput({ data,path }: { data: any[],path:string }) 
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Results">
             {data.map((item, i) => (
-              <Link href={`${path}/${item.id}`}>
+              <Link href={`${path}/${item.id}`} key={i}>
                 <CommandItem className="capitalize">{item.name} </CommandItem>
               </Link>
             ))}
