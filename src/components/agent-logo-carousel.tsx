@@ -20,30 +20,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-async function getAgentsLogos(): Promise<AgentLogo[]> {
-  try {
-    const response = await fetch(`${API_ENDPOINT}/agencies`, {
-      next: {
-        // revalidate after every hour
-        revalidate: 60,
-      },
-    })
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch agent logos: ${response.statusText}`)
-    }
-
-    const logos = (await response.json()) as AgentLogo[]
-
-    return logos
-  } catch (error: any) {
-    throw new Error(`Failed to parse response: ${error.message}`)
-  }
-}
-
-export async function AgentLogoCarousel() {
-  const agentsLogos = await getAgentsLogos()
-
+export async function AgentLogoCarousel({
+  agentLogos,
+}: {
+  agentLogos: AgentLogo[]
+}) {
   return (
     <Carousel
       opts={{
@@ -60,7 +41,7 @@ export async function AgentLogoCarousel() {
       className="w-full max-w-full"
     >
       <CarouselContent>
-        {agentsLogos.map((logo, index) => (
+        {agentLogos.map((logo, index) => (
           <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/12">
             <div className="p-1">
               <Card className=" rounded-xl">

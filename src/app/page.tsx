@@ -16,6 +16,27 @@ import PropertyGuide from "@/components/property-guide"
 import PropertyListings from "@/components/property-listings"
 import RecommendedLocation from "@/components/recommended-location"
 
+async function getAgentsLogos(): Promise<AgentLogo[]> {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/agencies`, {
+      next: {
+        // revalidate after every hour
+        revalidate: 60,
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch agent logos: ${response.statusText}`)
+    }
+
+    const logos = (await response.json()) as AgentLogo[]
+
+    return logos
+  } catch (error: any) {
+    throw new Error(`Failed to parse response: ${error.message}`)
+  }
+}
+
 async function getFeaturedProperties(): Promise<FeaturedPropertiesType[]> {
   try {
     const res = await fetch(`${API_ENDPOINT}/projects`, {
@@ -79,6 +100,7 @@ async function getRecommendedLocations(): Promise<RecommendedLocationType[]> {
 }
 
 export default async function Home() {
+  const agentsLogos = await getAgentsLogos()
   const featuredProperties = await getFeaturedProperties()
   const blogs = await getLatestBlogs()
   const listings = await getLatestListings()
@@ -131,7 +153,7 @@ export default async function Home() {
       </aside>
       <section className="mt-8 hidden w-full px-3 lg:block">
         {/* @ts-ignore */}
-        <AgentLogoCarousel />
+        <AgentLogoCarousel agentLogos={agentsLogos} />
       </section>
       <div className="mt-8 flex px-0 lg:mx-auto lg:max-w-[1400px] lg:gap-8">
         <section className="w-full lg:max-w-[1143px] ">
