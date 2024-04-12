@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { useClickOutside } from "@mantine/hooks"
-import { ChevronDownIcon } from "@radix-ui/react-icons"
+import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
