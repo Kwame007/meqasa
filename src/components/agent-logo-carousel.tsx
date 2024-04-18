@@ -1,10 +1,8 @@
 "use client"
 
-import * as React from "react"
-import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
+import Image from "next/image"
 
-import { API_ENDPOINT } from "@/lib/utils"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
@@ -20,11 +18,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export async function AgentLogoCarousel({
-  agentLogos,
-}: {
-  agentLogos: AgentLogo[]
-}) {
+export function AgentLogoCarousel({ agentLogos }: { agentLogos: AgentLogo[] }) {
   return (
     <Carousel
       opts={{

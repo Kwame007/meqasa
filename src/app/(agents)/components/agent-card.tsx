@@ -5,6 +5,7 @@ import Link from "next/link"
 import {
   FacebookIcon,
   InstagramIcon,
+  MapPin,
   TwitterIcon,
   YoutubeIcon,
 } from "lucide-react"
@@ -88,7 +89,6 @@ export function AgentCard({
   socials,
   website,
 }: AgentType) {
-  console.log(logo)
   return (
     <Card className="overflow-hidden rounded-xl border text-b-accent md:p-3">
       <CardContent className="flex gap-3 p-0 md:gap-6">
@@ -115,7 +115,7 @@ export function AgentCard({
             <h3 className="mb-1.5 text-base font-bold md:text-lg">{name}</h3>
           </Link>
           <p className="mb-2 flex w-full items-center gap-2 text-sm">
-            <Icons.location className=" h-4 w-4 text-primary" />
+            <MapPin className=" h-5 w-5 text-primary" strokeWidth="1.3" />
             <span className="line-clamp-1 text-b-muted">{location}</span>
           </p>
           <div className="mb-4 flex items-center text-sm">
@@ -129,16 +129,28 @@ export function AgentCard({
       <CardFooter className="mt-4 hidden h-fit items-center justify-between p-0 md:flex">
         <div className="flex max-w-full items-center gap-3 md:justify-between">
           <Link href="/">
-            <FacebookIcon className="h-5 w-5 text-b-muted transition md:hover:text-primary" />
+            <FacebookIcon
+              className="h-5 w-5 text-b-muted transition md:hover:text-primary"
+              strokeWidth="1.3"
+            />
           </Link>
           <Link href="/">
-            <InstagramIcon className="h-5 w-5 text-b-muted transition md:hover:text-primary" />
+            <InstagramIcon
+              className="h-5 w-5 text-b-muted transition md:hover:text-primary"
+              strokeWidth="1.3"
+            />
           </Link>
           <Link href="/">
-            <TwitterIcon className="h-5 w-5 text-b-muted transition md:hover:text-primary" />
+            <TwitterIcon
+              className="h-5 w-5 text-b-muted transition md:hover:text-primary"
+              strokeWidth="1.3"
+            />
           </Link>
           <Link href="/">
-            <YoutubeIcon className="h-6 w-6 text-b-muted transition md:hover:text-primary" />{" "}
+            <YoutubeIcon
+              className="h-6 w-6 text-b-muted transition md:hover:text-primary"
+              strokeWidth="1.3"
+            />{" "}
           </Link>
         </div>
         <ContactModal data={data?.agent}>

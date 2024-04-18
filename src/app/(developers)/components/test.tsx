@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
 import { ScrollLink } from "./scroll-link"
+import { Home, MapPin } from "lucide-react"
 
 export function Test() {
   // get window scroll height
@@ -30,7 +31,7 @@ export function Test() {
               href="#floor-plan"
               className="flex w-20 flex-col items-center lg:w-full lg:flex-row lg:gap-1"
             >
-              <Icons.floorPlan className="h-4 w-4" />
+              <Icons.floorPlan className="h-5 w-5" strokeWidth="1.3"/>
               <p className="text-sm font-medium text-b-blue lg:text-base">
                 Floor Plan
               </p>
@@ -41,7 +42,7 @@ export function Test() {
               href="#site-plan"
               className="flex w-20 flex-col items-center lg:w-full lg:flex-row lg:gap-1"
             >
-              <Icons.sitePlan className="h-4 w-4 text-b-blue" />
+              <Icons.sitePlan className="h-5 w-5 text-b-blue" strokeWidth="1.3"/>
               <p className="text-sm font-medium text-b-blue lg:text-base">
                 Site Plan
               </p>
@@ -52,7 +53,7 @@ export function Test() {
               href="#location"
               className="flex w-20 flex-col items-center lg:w-full lg:flex-row lg:gap-1"
             >
-              <Icons.location className="h-4 w-4 text-b-blue" />
+              <MapPin className="h-5 w-5 text-b-blue" strokeWidth="1.3"/>
               <p className="text-sm font-medium text-b-blue lg:text-base">
                 Location
               </p>
@@ -63,7 +64,7 @@ export function Test() {
               href="#units"
               className="flex w-28 flex-col items-center  lg:w-full lg:flex-row lg:gap-1"
             >
-              <Icons.house className="h-4 w-4 text-b-blue" />
+              <Home className="h-5 w-5 text-b-blue" strokeWidth="1.3"/>
               <p className="text-sm font-medium text-b-blue lg:text-base">
                 Available units
               </p>

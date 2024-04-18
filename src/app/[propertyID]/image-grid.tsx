@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card"
 // import { ThumbnailCarousel } from "@/components/carousel/thumbnail-carousel"
 import { Icons } from "@/components/icons"
 import { Thumbnail } from "@/components/thumbnail"
+import { Camera, ImageIcon } from "lucide-react"
 
 // Reusable component for each image container
 function ImageContainer({
@@ -48,7 +49,7 @@ export function ImageGrid({ images }: { images: string[] }) {
         <div className="absolute bottom-2 left-4 z-20">
           <Thumbnail images={images}>
             <Button className="flex w-fit items-center gap-2 bg-background font-semibold text-b-accent hover:bg-b-accent hover:text-accent">
-              <Icons.photo className="h-5 w-5" /> {images.length} photos
+              <Camera className="h-5 w-5" strokeWidth="1.3"/> {images.length} photos
             </Button>
           </Thumbnail>
         </div>

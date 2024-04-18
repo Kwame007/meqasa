@@ -3,6 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { Camera, Clock, Dot, Heart, ImageIcon } from "lucide-react"
 
 import { shimmer, toBase64 } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -43,11 +44,14 @@ export function AgentPropertyCard() {
               {isFavorite ? (
                 <Icons.heartFilled className="h-5 w-5 text-[#E11D47]" />
               ) : (
-                <Icons.heart className="h-5 w-5 text-[#E11D47]" />
+                <Heart className="h-5 w-5 text-[#E11D47]" strokeWidth="1.3" />
               )}
             </Button>
             <Badge className="absolute bottom-4 right-4 z-20 bg-white uppercase  hover:bg-white">
-              <Icons.photos className="mr-1 h-4 w-4 text-b-accent" />
+              <Camera
+                className="mr-1 h-5 w-5 text-b-accent"
+                strokeWidth="1.3"
+              />
               <p className="font-bold text-b-accent">10</p>
             </Badge>
           </div>
@@ -73,15 +77,15 @@ export function AgentPropertyCard() {
 
         <div className="flex items-center gap-1 py-2 text-sm">
           <span>2 Beds</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>2 Baths</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>3 Parking</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>300 m²</span>
         </div>
         <div className="flex items-center gap-2 text-b-muted">
-          <Icons.time className="h-5 w-5" />
+          <Clock className="h-5 w-5" strokeWidth="1.3" />
           <span className="text-sm">Updated Today</span>
         </div>
       </div>

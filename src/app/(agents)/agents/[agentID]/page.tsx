@@ -1,19 +1,20 @@
+import Image from "next/image"
+import Link from "next/link"
 import {
   Building,
   FacebookIcon,
   InstagramIcon,
+  MapPin,
   Share2,
   TwitterIcon,
-  YoutubeIcon
+  YoutubeIcon,
 } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
 
-import { ClientContactForm } from "@/components/client-contact-form"
-import { Icons } from "@/components/icons"
+import { API_ENDPOINT } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { API_ENDPOINT } from "@/lib/utils"
+import { ClientContactForm } from "@/components/client-contact-form"
+import { Icons } from "@/components/icons"
 
 // import { AgentProfileCard } from "@/components/agent/AgentProfileCard"
 // import { ClientContactForm } from "@/components/developer/FormCard"
@@ -240,30 +241,36 @@ export default async function page({ params: { agentID } }: Params) {
                     </Badge>
                   </h1>
                   <p className="text-l mt-2 flex items-center gap-2 text-b-muted">
-                    <Icons.location className="h-4 w-4 text-b-primary" />{" "}
+                    <MapPin
+                      className="h-5 w-5 text-b-primary"
+                      strokeWidth="1.3"
+                    />{" "}
                     Trinity Junction, East Legon
                   </p>
                   <p className="text-l  mt-2 flex items-center gap-2 text-b-muted">
-                    <Building className="h-4 w-4 text-b-primary" />
+                    <Building
+                      className="h-5 w-5 text-b-primary"
+                      strokeWidth="1.3"
+                    />
                     Sompa Properties
                   </p>
                 </div>
                 <Button size="icon" variant="outline">
-                  <Share2 className="h-5 w-5 text-b-muted" />
+                  <Share2 className="h-5 w-5 text-b-muted" strokeWidth="1.3" />
                 </Button>
               </div>
               <div className="my-8 flex max-w-full items-center gap-6 md:gap-3">
                 <Link href="/">
-                  <FacebookIcon className="h-5 w-5" />
+                  <FacebookIcon className="h-5 w-5" strokeWidth="1.3" />
                 </Link>
                 <Link href="/">
-                  <InstagramIcon className="h-5 w-5" />
+                  <InstagramIcon className="h-5 w-5" strokeWidth="1.3" />
                 </Link>
                 <Link href="/">
-                  <TwitterIcon className="h-5 w-5" />
+                  <TwitterIcon className="h-5 w-5" strokeWidth="1.3" />
                 </Link>
                 <Link href="/">
-                  <YoutubeIcon className="h-6 w-6" />{" "}
+                  <YoutubeIcon className="h-6 w-6" strokeWidth="1.3" />{" "}
                 </Link>
               </div>
               <div className="mb-10 grid grid-cols-3 divide-x border-y border-gray-100 px-2 py-8">

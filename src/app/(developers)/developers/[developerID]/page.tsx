@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { MapPin, ShieldCheck } from "lucide-react"
 
 import { API_ENDPOINT, cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -112,12 +113,18 @@ export default async function page({ params: { developerID } }: Params) {
 
                 <div className="mt-1">
                   <span className="flex items-center gap-2 text-sm text-white">
-                    <Icons.verified className="inline-block h-4 w-5 text-white lg:h-5 lg:w-5" />{" "}
+                    <ShieldCheck
+                      className="inline-block h-5 w-5 text-green-600"
+                      strokeWidth="1.3"
+                    />{" "}
                     active on meqasa
                   </span>
                   <span className="mt-1 flex items-center gap-2 text-end text-xs text-b-primary lg:text-sm">
                     {" "}
-                    <Icons.location className="inline-block h-4 w-5 lg:h-5 lg:w-5" />{" "}
+                    <MapPin
+                      className="inline-block h-5 w-5"
+                      strokeWidth="1.3"
+                    />{" "}
                     {developer.location}
                   </span>
                 </div>
@@ -171,8 +178,8 @@ export default async function page({ params: { developerID } }: Params) {
             <Card className="w-fit rounded-xl border-orange-400 p-3 text-b-accent">
               <h4 className="font-semibold">Address</h4>
               <p className="flex items-center">
-                <Icons.location className="mr-2 w-4 text-b-primary" /> Kanda
-                Estates, Ghana
+                <MapPin className="mr-2 text-primary h-5 w-5" strokeWidth="1.3" />{" "}
+                Kanda Estates, Ghana
               </p>
             </Card>
           </aside>
@@ -197,7 +204,7 @@ function TabsDemo({ completedProjects, currentProjects, units }: ProjectsType) {
       <TabsList className="grid h-[60px] w-full grid-cols-3 px-2">
         <TabsTrigger
           value="current"
-          className="group h-11 text-sm data-[state=active]:text-b-accent"
+          className="group h-11 text-sm data-[state=active]:text-b-accent text-b-muted"
         >
           Current Projects{" "}
           <span className="ml-2 hidden h-6 w-6 items-center justify-center rounded-lg bg-primary font-semibold text-white opacity-0 shadow-subtle transition-opacity duration-200 ease-in group-data-[state=active]:opacity-100 lg:flex">
@@ -206,7 +213,7 @@ function TabsDemo({ completedProjects, currentProjects, units }: ProjectsType) {
         </TabsTrigger>
         <TabsTrigger
           value="available"
-          className="group h-11 text-sm data-[state=active]:text-b-accent"
+          className="group h-11 text-sm data-[state=active]:text-b-accent text-b-muted"
         >
           Available Units{" "}
           <span className="ml-2 hidden h-6 w-6 items-center justify-center rounded-lg bg-primary font-semibold text-white opacity-0 shadow-subtle transition-opacity duration-200 ease-in group-data-[state=active]:opacity-100 lg:flex">
@@ -215,7 +222,7 @@ function TabsDemo({ completedProjects, currentProjects, units }: ProjectsType) {
         </TabsTrigger>
         <TabsTrigger
           value="past"
-          className="group h-11 text-sm data-[state=active]:text-b-accent"
+          className="group h-11 text-sm data-[state=active]:text-b-accent text-b-muted"
         >
           Past Projects{" "}
           <span className="ml-2 hidden h-6 w-6 items-center justify-center rounded-lg bg-primary font-semibold text-white opacity-0 shadow-subtle transition-opacity duration-200 ease-in group-data-[state=active]:opacity-100 lg:flex">

@@ -2,8 +2,8 @@
 
 import React from "react"
 import Image, { StaticImageData } from "next/image"
+import { LayoutGrid, Maximize } from "lucide-react"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -14,7 +14,6 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel"
-// import { ThumbnailCarousel } from "@/components/carousel/thumbnail-carousel"
 import { Icons } from "@/components/icons"
 
 export function SitePlanCarousel({
@@ -73,7 +72,7 @@ export function SitePlanCarousel({
         </CarouselContent>
         <CarouselPrevious className="group -left-20 h-11 w-11 bg-white" />
         <CarouselNext className="group -right-20 h-11 w-11 bg-white" />
-        <div className="absolute inset-x-0 bottom-0 flex justify-center justify-self-start py-2 text-center text-sm font-semibold text-white">
+        <div className="absolute inset-x-0 bottom-0 flex justify-center py-2 text-center text-sm font-semibold text-white">
           <p>
             {" "}
             Slide {current} of {count}
@@ -83,8 +82,8 @@ export function SitePlanCarousel({
           {/* <ThumbnailCarousel images={images} index={0}> */}
           <>
             <Button className="grid w-auto cursor-pointer grid-flow-col items-center justify-center gap-1 rounded-full bg-[rgba(0,0,0,.7)] px-3 py-2 hover:bg-[rgba(0,0,0,.75)]">
-              <Icons.grid className="h-4 w-4" strokeWidth="2.0" />
-              <p className="text-xs font-bold">See all ( 3 )</p>
+              <LayoutGrid className="h-5 w-5" strokeWidth="1.3" />
+              <p className="text-xs font-normal">See all ( 3 )</p>
             </Button>
           </>
           {/* </ThumbnailCarousel> */}
@@ -92,8 +91,11 @@ export function SitePlanCarousel({
         <div className="absolute right-2 top-0 py-2">
           {/* <ThumbnailCarousel images={images} index={0}> */}
           <>
-            <Button className="w-auto cursor-pointer items-center justify-center rounded-full bg-[rgba(0,0,0,.7)] px-3 py-2 hover:bg-[rgba(0,0,0,.75)]">
-              <Icons.expand className="h-4 w-4" strokeWidth="2.0" />
+            <Button
+              className=" cursor-pointer items-center justify-center rounded-full bg-[rgba(0,0,0,.7)]  hover:bg-[rgba(0,0,0,.75)]"
+              size="icon"
+            >
+              <Maximize className="h-5 w-5" strokeWidth="1.3" />
             </Button>
           </>
           {/* </ThumbnailCarousel> */}

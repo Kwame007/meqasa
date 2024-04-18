@@ -2,6 +2,7 @@ import Image from "next/image"
 import site1 from "@/../public/plans/site-plan-1.jpeg"
 import site2 from "@/../public/plans/site-plan-2.jpeg"
 import site3 from "@/../public/plans/site-plan-3.jpeg"
+import { Dot, MapPin, ShieldCheck } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -152,13 +153,16 @@ export default async function page() {
                 </div>
                 <div className="mt-3">
                   <span className="flex items-center gap-2 text-sm font-normal text-b-muted">
-                    <Icons.verified className="inline-block h-5 w-5 text-white lg:h-5 lg:w-5" />{" "}
+                    <ShieldCheck
+                      className="h-5 w-5 text-green-600"
+                      strokeWidth="1.3"
+                    />{" "}
                     active on meqasa
                   </span>
                   <span className="mt-1 flex items-center gap-2 text-end text-xs font-medium text-b-blue lg:text-sm">
                     {" "}
-                    <Icons.location className="inline-block h-4 w-5 lg:h-5 lg:w-4" />{" "}
-                    Airport Residential, AC
+                    <MapPin className="h-4 w-5" strokeWidth="1.3" /> Airport
+                    Residential, AC
                   </span>
                 </div>
               </div>
@@ -183,14 +187,14 @@ export default async function page() {
             </div>
             <div className="mb-2 text-sm">
               <span className="flex items-center font-light text-inherit">
-                Apartment <Icons.dot className="h-4 w-4" />{" "}
+                Apartment <Dot className="h-4 w-4" />{" "}
                 <span className=" uppercase">1 BDR, 2 BDR, 3 BDR</span>
               </span>
             </div>
             <div className="mt-1 flex items-center gap-2 text-end text-xs font-medium text-b-blue lg:text-sm">
               {" "}
-              <Icons.location className="inline-block h-4 w-5 lg:h-5 lg:w-4" />{" "}
-              Airport Residential, AC
+              <MapPin className="h-5 w-5" strokeWidth="1.3" /> Airport
+              Residential, AC
             </div>
           </div>
 

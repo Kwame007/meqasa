@@ -1,17 +1,30 @@
-import Image from "next/image"
-import Link from "next/link"
 import insightFloor from "@/../public/icons/insights_floorarea@3x.webp"
 import insightPrice from "@/../public/icons/insights_price@3x.webp"
 import noListings from "@/../public/nearby-listing-intro.webp"
 import plan4 from "@/../public/plans/plan-4.webp"
-import { LightbulbIcon } from "lucide-react"
-
 import {
-  API_ENDPOINT,
-  cn,
-  createNumberFormatter,
-  formatToGhsCurrency,
-} from "@/lib/utils"
+  Bath,
+  BedIcon,
+  Heart,
+  LightbulbIcon,
+  ParkingSquare,
+  Square
+} from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+
+import LeaseOptions from "@/app/[propertyID]/components/lease-options"
+import MortgageCalculator from "@/app/[propertyID]/components/mortgage-calculator"
+import { PropertyDescription } from "@/app/[propertyID]/components/project-description"
+import { PropertyAmenities } from "@/app/[propertyID]/components/property-amenities"
+import { PropertyDetails } from "@/app/[propertyID]/components/property-details"
+import { ImageGrid } from "@/app/[propertyID]/image-grid"
+import { DynamicCarousel } from "@/components/DynamicCarousel"
+import { Breadcrumbs } from "@/components/bread-crumbs"
+import { ClientContactForm } from "@/components/client-contact-form"
+import ContactFixed from "@/components/contact-fixed"
+import { Icons } from "@/components/icons"
+import { PropertyUnitCard } from "@/components/property-unit-card"
 import { Badge } from "@/components/ui/badge"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -22,22 +35,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Breadcrumbs } from "@/components/bread-crumbs"
-import { ClientContactForm } from "@/components/client-contact-form"
-import ContactFixed from "@/components/contact-fixed"
-import { DynamicCarousel } from "@/components/DynamicCarousel"
-import { Icons } from "@/components/icons"
-import { PropertyUnitCard } from "@/components/property-unit-card"
-import LeaseOptions from "@/app/[propertyID]/components/lease-options"
-import MortgageCalculator from "@/app/[propertyID]/components/mortgage-calculator"
-import { PropertyDescription } from "@/app/[propertyID]/components/project-description"
-import { PropertyAmenities } from "@/app/[propertyID]/components/property-amenities"
-import { PropertyDetails } from "@/app/[propertyID]/components/property-details"
-import { ImageGrid } from "@/app/[propertyID]/image-grid"
+import {
+  API_ENDPOINT,
+  cn,
+  createNumberFormatter,
+  formatToGhsCurrency,
+} from "@/lib/utils"
 
 // Constants for styles and dimensions
-const BADGE_CLASS =
-  " bg-[#F0F6FF] shadow-sm uppercase text-blue-500 max-w-full"
+const BADGE_CLASS = " bg-[#F0F6FF] shadow-sm uppercase text-blue-500 max-w-full"
 
 export default async function Page({
   params,
@@ -129,7 +135,7 @@ export default async function Page({
                 href: "/",
               },
               {
-                title: `Propert-id-${params.propertyID}`,
+                title: `Property-id-${params.propertyID}`,
                 href: `/${params.propertyID}`,
               },
             ]}
@@ -195,7 +201,7 @@ export default async function Page({
               size="sm"
               className="hidden w-fit items-center gap-2 justify-self-end bg-b-accent px-2 text-xs hover:bg-b-accent lg:flex"
             >
-              <Icons.heart className="h-4 w-4" /> Add to favorite
+              <Heart className="h-5 w-5" strokeWidth="1.3" /> Add to favorite
             </Button>
           </div>
           <aside>
@@ -277,7 +283,7 @@ export default async function Page({
             <div className="items-center gap-8 p-4 lg:flex lg:px-0 lg:py-10">
               <div className="flex h-[66px] w-full items-center justify-center gap-4 rounded-lg bg-[#d7e9ff] px-4 lg:justify-between">
                 <div className="hidden rounded-full bg-[#1e65ff] p-1 lg:block">
-                  <LightbulbIcon className="h-6 w-6 text-[#d7e9ff]" />
+                  <LightbulbIcon className="h-5 w-5 text-[#d7e9ff]" strokeWidth="1.3"/>
                 </div>
                 <p className="text lg:font- w-full">
                   Like this property? Add as favorites and compare listings
@@ -498,76 +504,6 @@ export default async function Page({
         )}
       </section>
 
-      {/* <div className="grid text-b-accent lg:container lg:mt-6 lg:grid-cols-[736px,1fr] lg:gap-8 lg:px-0">
-       
-
-         
-
-
-      <section className="pt- my-6 grid max-w-full border-b-2 pb-4 lg:container lg:mb-0 lg:mt-16 lg:border-0">
-        {similarListings.length !== 0 && (
-          <div className="flex items-center justify-between px-4 lg:p-0 lg:pb-4">
-            <h5 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
-              Similar Listings
-            </h5>
-            <Link href="/blog" className="font-bold text-b-blue">
-              See all
-            </Link>
-          </div>
-        )}
-
-        {similarListings.length > 4 ? (
-          <div className="mt-8 overflow-x-scroll">
-            <WrapperWithCarousel
-              slides={content}
-              options={CAROUSEL_OPTIONS}
-              height={"h-full"}
-              width="w-[256px]"
-            />
-          </div>
-        ) : (
-          <div className="overflow-x-scroll">
-            <div className="mt-8">
-              <div className="overflow-x-scroll ">
-                <div className="grid grid-cols-[4px_1fr_1fr_1fr_1fr_0px] gap-2 overflow-x-scroll lg:grid-cols-4 lg:gap-8 lg:py-4">
-                  <div className="w-1 lg:hidden" />
-                  {similarListings.map((item) => (
-                    <PropertyUnitCard {...item} key={item.id} />
-                  ))}
-                  <div className="w-1 lg:hidden" />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {similarListings.length === 0 && (
-          <div className="px-4 text-center  lg:max-w-lg lg:p-0">
-            <h4 className="text-center text-lg font-semibold text-b-accent">
-              Oh no, there are no more listings that match your criteria.
-            </h4>
-            <Link
-              href="/"
-              className={cn(
-                buttonVariants({ variant: "link" }),
-                "mb-4 block text-center text-b-blue"
-              )}
-            >
-              Try checking out properties nearby?
-            </Link>
-            <>
-              <Image
-                src={noListings}
-                alt="nothing found image"
-                width={250}
-                height={200}
-                sizes="200px"
-                className="mx-auto"
-              />
-            </>
-          </div>
-        )}
-      </section> */}
       <ContactFixed />
     </div>
   )
@@ -577,13 +513,22 @@ export default async function Page({
 function getAmenityIcon(key: string) {
   switch (key) {
     case "beds":
-      return <Icons.beds className="mr-1" />
+      return (
+        <BedIcon className="mr-1 h-5 w-5 text-[#787D9B]" strokeWidth="1.3" />
+      )
     case "baths":
-      return <Icons.baths className="mr-1" />
+      return <Bath className="mr-1 h-5 w-5 text-[#787D9B]" strokeWidth="1.3" />
     case "garage":
-      return <Icons.parking className="mr-1" />
+      return (
+        <ParkingSquare
+          className="mr-1 h-5 w-5 text-[#787D9B]"
+          strokeWidth="1.3"
+        />
+      )
     case "sqft":
-      return <Icons.area className="mr-1" />
+      return (
+        <Square className="mr-1 h-5 w-5 text-[#787D9B]" strokeWidth="1.3" />
+      )
     // Add more cases for other amenities as needed
     default:
       return null // Return null if there's no matching icon

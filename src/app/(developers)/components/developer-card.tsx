@@ -1,9 +1,11 @@
 "use client"
 
 import {
+  Dot,
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
+  MapPin,
   TwitterIcon,
   YoutubeIcon,
 } from "lucide-react"
@@ -113,27 +115,27 @@ export function DeveloperCard({
           <div className="mt-3 flex w-full items-center gap-3 p-3 text-b-muted md:p-0">
             {socials.facebook && (
               <Link href="/">
-                <FacebookIcon className="h-5 w-5 transition md:hover:text-primary" />
+                <FacebookIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3" />
               </Link>
             )}
             {socials.instagram && (
               <Link href="/">
-                <InstagramIcon className="h-5 w-5 transition md:hover:text-primary" />
+                <InstagramIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>
               </Link>
             )}
             {socials.twitter && (
               <Link href="/">
-                <TwitterIcon className="h-5 w-5 transition md:hover:text-primary" />
+                <TwitterIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>
               </Link>
             )}
             {socials.linkedin && (
               <Link href="/">
-                <LinkedinIcon className="h-5 w-5 transition md:hover:text-primary" />
+                <LinkedinIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>
               </Link>
             )}
             {socials.youtube && (
               <Link href="/">
-                <YoutubeIcon className="h-5 w-5 transition md:hover:text-primary" />{" "}
+                <YoutubeIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>{" "}
               </Link>
             )}
           </div>
@@ -147,12 +149,12 @@ export function DeveloperCard({
                 </h3>
               </Link>
               <div className="mb-1.5 flex items-center gap-2">
-                <Icons.location className="h-4 w-4 text-primary" />{" "}
+                <MapPin className="h-5 w-5 text-primary" strokeWidth="1.3"/>{" "}
                 <p className="line-clamp-1 text-sm text-b-muted">{location}</p>
               </div>
               <div className="mb-2 flex items-center gap-1.5 text-sm font-medium md:text-base">
                 <span>{units.length} units</span>
-                <Icons.dot />
+                <Dot />
                 <span>{"1"} projects</span>
               </div>
             </div>

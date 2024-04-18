@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { MapPin } from "lucide-react"
 
 import { cn, shimmer, toBase64 } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -64,7 +65,7 @@ export default function DeveloperProjectCard({
                 </h4>
 
                 <div className="flex items-center gap-1 pt-1 text-sm text-[#E4E5EA] drop-shadow-md">
-                  <Icons.location className=" h-4 w-4 text-primary" />{" "}
+                  <MapPin className=" h-5 w-5 text-primary" strokeWidth="1.3" />{" "}
                   <span
                     style={{ textShadow: "1px 1px 2px rgba(0, 0, 0,0.18)" }}
                   >

@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+
 import { Thumbnail } from "./thumbnail"
 
 interface CarouselProps {
@@ -67,28 +68,6 @@ export function DynamicCarousel({ isDeveloper, images }: CarouselProps) {
       </div>
     </CarouselItem>
   ))
-  // <React.Fragment
-  // className={cn(
-  //   isDeveloper
-  //     ? "h-full basis-full lg:basis-[400px] lg:pl-3 lg:first:pl-0"
-  //     : "basis-full",
-  //   "relative w-full min-w-0 shrink-0 grow-0 lg:w-auto"
-  // )}
-  // key={i}
-  // >
-  {
-    /* ThumbnailCarousel component for each image */
-  }
-  {
-    /* <ThumbnailCarousel images={images} index={i}> */
-  }
-
-  // />
-  {
-    /* </ThumbnailCarousel> */
-  }
-  // </React.Fragment>
-  // ))
 
   return (
     <div

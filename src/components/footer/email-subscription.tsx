@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label"
 
 import { Icons } from "../icons"
 import { Card } from "../ui/card"
+import { Mail } from "lucide-react"
 
 /**
  * Renders the EmailSubscription component.
@@ -32,7 +33,7 @@ export default function EmailSubscription() {
             action="/subscription"
           >
             <Label htmlFor="email" className="relative">
-              <Icons.mail className="absolute left-2 top-[18px] h-5 w-5 text-b-accent" />
+              <Mail className="absolute left-2 top-[18px] h-5 w-5 text-b-accent" strokeWidth="1.3"/>
               <Input
                 placeholder="kwame007@meqasa.com"
                 id="email"
