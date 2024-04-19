@@ -86,7 +86,7 @@ export default function Guide() {
                   Housing Guide
                 </p>
                 <h1 className="mb-6 mt-2 text-xl font-bold leading-tight tracking-tighter text-b-accent md:text-3xl md:font-extrabold">
-                  <a name="overview"> OVERVIEW</a>
+                  <a id="overview"> OVERVIEW</a>
                 </h1>
                 <p className="mt-6 leading-8 text-b-muted">
                   Ghana currently has a social housing problem, with a deficit
