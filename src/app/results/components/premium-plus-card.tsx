@@ -4,6 +4,7 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Tooltip } from "@radix-ui/react-tooltip"
+import { Dot, Heart, Phone } from "lucide-react"
 
 import { cn, shimmer, toBase64 } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -84,12 +85,12 @@ export function PremiumPlusPropertyCard() {
   const [isFavorite, setIsFavorite] = React.useState(false)
 
   return (
-    <Card className="mb-8 flex h-fit min-w-[256px] flex-col gap-4 rounded-2xl text-b-accent border-none shadow">
+    <Card className="mb-8 flex h-fit min-w-[256px] flex-col gap-4 rounded-2xl border-none text-b-accent shadow">
       <CardHeader className="p-0">
-        <div className="relative min-w-[256px] rounded-2xl md:min-h-[202px]">
+        <div className="relative min-w-[256px] rounded-2xl lg:min-h-[202px]">
           <Link href="/2" className="absolute inset-0 z-10"></Link>
           <Image
-            className="h-[202px] w-full rounded-t-lg object-cover md:h-[279px] md:rounded-none md:rounded-t-2xl"
+            className="h-[202px] w-full rounded-t-2xl object-cover lg:h-[279px] lg:rounded-none lg:rounded-t-2xl"
             width={1028}
             height={279}
             src="https://images.unsplash.com/photo-1648366320948-8d34e24a341e?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -101,7 +102,7 @@ export function PremiumPlusPropertyCard() {
             sizes="728px"
           />
           <div className=" absolute inset-0 rounded-2xl ">
-            <Badge className="absolute left-4 top-4 z-20 uppercase bg-primary">
+            <Badge className="absolute left-4 top-4 z-20 bg-primary uppercase">
               Premium Plus
             </Badge>
             <Button
@@ -112,14 +113,14 @@ export function PremiumPlusPropertyCard() {
               {isFavorite ? (
                 <Icons.heartFilled className="h-5 w-5 text-[#E11D47]" />
               ) : (
-                <Icons.heart className="h-5 w-5 text-[#E11D47]" />
+                <Heart className="h-5 w-5 text-[#E11D47]" strokeWidth="1.3" />
               )}
             </Button>
           </div>
         </div>
       </CardHeader>
       <CardContent className=" flex flex-col items-start p-0 px-4">
-        <h3 className="md:text-lg font-extrabold ">
+        <h3 className="font-extrabold lg:text-lg ">
           <Link
             href="/2"
             title=" 1 Bedroom Furnished Apartment For Rent At East Legon"
@@ -129,25 +130,25 @@ export function PremiumPlusPropertyCard() {
         </h3>
         <div className="flex items-center pt-2 font-light">
           <span>2 Beds</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>2 Baths</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>3 Parking</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>300 m²</span>
         </div>
-        <div className="flex items-center gap-2 h-fit pt-3">
+        <div className="flex h-fit items-center gap-2 pt-3">
           <p className="text-base font-bold">
             GHS 27,500{" "}
             <span className="text-sm font-normal text-b-muted">/month</span>
           </p>
-          <Icons.dot />
-          <Badge className="uppercase bg-[#21c55d]">verified agent</Badge>
+          <Dot className="h-4 w-4" />
+          <Badge className="bg-[#21c55d] uppercase">verified agent</Badge>
         </div>
       </CardContent>
       <CardFooter className="flex items-center gap-2 p-4">
         <>
-          <Avatar className="flex items-center rounded-full text-b-accent shadow border">
+          <Avatar className="flex items-center rounded-full border text-b-accent shadow">
             <AvatarImage
               src="https://dve7rykno93gs.cloudfront.net/uploads/imgs/7270c01718abf4e0ee2e712a4ea81144"
               className="rounded-full object-contain"
@@ -158,12 +159,12 @@ export function PremiumPlusPropertyCard() {
           </Avatar>
         </>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
                 {" "}
-                <span className="line-clamp-1 w-44 text-center text-xs text-b-muted md:text-sm">
+                <span className="line-clamp-1 w-44 text-center text-xs text-b-muted lg:text-sm">
                   Updated 2 days ago
                 </span>
               </TooltipTrigger>
@@ -182,7 +183,7 @@ export function PremiumPlusPropertyCard() {
                 size="icon"
                 className="flex items-center gap-1.5  font-semibold text-b-accent"
               >
-                <Icons.phone className="h-4 w-4" />
+                <Phone className="h-4 w-5" />
                 {/* Contact agent */}
               </Button>
             </ContactModal>

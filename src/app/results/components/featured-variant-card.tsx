@@ -3,6 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { Dot } from "lucide-react"
 
 import { shimmer, toBase64 } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
@@ -12,7 +13,7 @@ import { Icons } from "@/components/icons"
 
 export function FeaturedPropertyVariantCard() {
   return (
-    <Card className="relative mb-4 h-[321px] w-full overflow-hidden rounded-2xl text-b-accent border-none">
+    <Card className="relative mb-4 h-[321px] w-full overflow-hidden rounded-2xl border-none text-b-accent">
       <div
         className="absolute inset-0 z-10"
         style={{
@@ -41,18 +42,18 @@ export function FeaturedPropertyVariantCard() {
           <div className="absolute inset-x-4 bottom-4 z-20">
             <div className="flex items-end justify-between">
               <div className="text-white">
-                <h2 className=" md:text-xl font-bold">
+                <h2 className=" font-bold md:text-xl">
                   <Link href="/developer/project/2" className="">
                     The Lennox Development Project
                   </Link>
                 </h2>
 
-                <div className="flex items-center text-sm md:text-base gap-1 pt-2 text-[#E4E5EA]">
+                <div className="flex items-center gap-1 pt-2 text-sm text-[#E4E5EA] md:text-base">
                   <span>Airport Residential</span>
-                  <Icons.dot />
+                  <Dot className="h-4 w-4" />
                   <span>Accra</span>
                 </div>
-                <div className="text-sm md:text-base text-[#E4E5EA]">
+                <div className="text-sm text-[#E4E5EA] md:text-base">
                   <p>1,2,3 Bedrooms</p>
                 </div>
                 <Button className="mt-3">View project</Button>
@@ -63,7 +64,7 @@ export function FeaturedPropertyVariantCard() {
                   alt={"project"}
                   width={100}
                   height={100}
-                  className="h-14 w-14 md:h-auto md:w-auto rounded-md"
+                  className="h-14 w-14 rounded-md md:h-auto md:w-auto"
                 />
               </div>
             </div>

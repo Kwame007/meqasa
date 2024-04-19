@@ -1,3 +1,5 @@
+import Image from "next/image"
+import Link from "next/link"
 import insightFloor from "@/../public/icons/insights_floorarea@3x.webp"
 import insightPrice from "@/../public/icons/insights_price@3x.webp"
 import noListings from "@/../public/nearby-listing-intro.webp"
@@ -8,23 +10,15 @@ import {
   Heart,
   LightbulbIcon,
   ParkingSquare,
-  Square
+  Square,
 } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
 
-import LeaseOptions from "@/app/[propertyID]/components/lease-options"
-import MortgageCalculator from "@/app/[propertyID]/components/mortgage-calculator"
-import { PropertyDescription } from "@/app/[propertyID]/components/project-description"
-import { PropertyAmenities } from "@/app/[propertyID]/components/property-amenities"
-import { PropertyDetails } from "@/app/[propertyID]/components/property-details"
-import { ImageGrid } from "@/app/[propertyID]/image-grid"
-import { DynamicCarousel } from "@/components/DynamicCarousel"
-import { Breadcrumbs } from "@/components/bread-crumbs"
-import { ClientContactForm } from "@/components/client-contact-form"
-import ContactFixed from "@/components/contact-fixed"
-import { Icons } from "@/components/icons"
-import { PropertyUnitCard } from "@/components/property-unit-card"
+import {
+  API_ENDPOINT,
+  cn,
+  createNumberFormatter,
+  formatToGhsCurrency,
+} from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -35,12 +29,20 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import {
-  API_ENDPOINT,
-  cn,
-  createNumberFormatter,
-  formatToGhsCurrency,
-} from "@/lib/utils"
+import { Breadcrumbs } from "@/components/bread-crumbs"
+import { ClientContactForm } from "@/components/client-contact-form"
+import ContactFixed from "@/components/contact-fixed"
+import { DynamicCarousel } from "@/components/DynamicCarousel"
+import { Icons } from "@/components/icons"
+import { PropertyUnitCard } from "@/components/property-unit-card"
+import LeaseOptions from "@/app/[propertyID]/components/lease-options"
+import MortgageCalculator from "@/app/[propertyID]/components/mortgage-calculator"
+import { PropertyDescription } from "@/app/[propertyID]/components/project-description"
+import { PropertyAmenities } from "@/app/[propertyID]/components/property-amenities"
+import { PropertyDetails } from "@/app/[propertyID]/components/property-details"
+import { ImageGrid } from "@/app/[propertyID]/image-grid"
+
+import { LoadingSkeleton } from "./components/loading-skeleton"
 
 // Constants for styles and dimensions
 const BADGE_CLASS = " bg-[#F0F6FF] shadow-sm uppercase text-blue-500 max-w-full"
@@ -283,7 +285,10 @@ export default async function Page({
             <div className="items-center gap-8 p-4 lg:flex lg:px-0 lg:py-10">
               <div className="flex h-[66px] w-full items-center justify-center gap-4 rounded-lg bg-[#d7e9ff] px-4 lg:justify-between">
                 <div className="hidden rounded-full bg-[#1e65ff] p-1 lg:block">
-                  <LightbulbIcon className="h-5 w-5 text-[#d7e9ff]" strokeWidth="1.3"/>
+                  <LightbulbIcon
+                    className="h-5 w-5 text-[#d7e9ff]"
+                    strokeWidth="1.3"
+                  />
                 </div>
                 <p className="text lg:font- w-full">
                   Like this property? Add as favorites and compare listings

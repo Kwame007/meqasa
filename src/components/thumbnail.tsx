@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useCallback } from "react"
 import Image, { StaticImageData } from "next/image"
 
-import { shimmer, toBase64 } from "@/lib/utils"
+import { cn, shimmer, toBase64 } from "@/lib/utils"
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +13,7 @@ import {
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 
 import { Icons } from "./icons"
+import { Thumb } from "./thumbnail-buttons"
 import { Button } from "./ui/button"
 import { Card, CardContent } from "./ui/card"
 
@@ -24,8 +25,19 @@ export function Thumbnail({
   images: string[] | StaticImageData[]
 }) {
   const [api, setApi] = React.useState<CarouselApi>()
+  const [thumbsApi, setThumbsApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState(0)
+  const [selectedIndex, setSelectedIndex] = React.useState(0)
   const [count, setCount] = React.useState(0)
+
+  const onThumbClick = useCallback(
+    (index: number) => {
+      if (!api || !thumbsApi) return
+      api.scrollTo(index)
+      thumbsApi.scrollTo(index)
+    },
+    [api, thumbsApi]
+  )
 
   React.useEffect(() => {
     if (!api) {
@@ -34,11 +46,14 @@ export function Thumbnail({
 
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
+    setSelectedIndex(api.selectedScrollSnap())
 
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1)
+      setSelectedIndex(api.selectedScrollSnap())
+      thumbsApi?.scrollTo(selectedIndex)
     })
-  }, [api])
+  }, [api, thumbsApi, selectedIndex])
 
   return (
     <Dialog>
@@ -81,8 +96,40 @@ export function Thumbnail({
             </div>
           </Carousel>
         </div>
-        <div className="hidden text-white lg:block">
-          thumbnails go here #INDEVELOPMENT
+        <div className="hidden text-white lg:flex lg:justify-center">
+          <div className="w-fit max-w-full">
+            <Carousel
+              className="w-full max-w-full"
+              opts={{ align: "center" }}
+              setApi={setThumbsApi}
+            >
+              <CarouselContent>
+                {images.map((img, index) => (
+                  <CarouselItem key={index} className="basis-[200px] ">
+                    <div>
+                      <Card
+                        className={cn(
+                          index === selectedIndex
+                            ? "border-[3px] border-red-600"
+                            : "border-0",
+                          "overflow-hidden"
+                        )}
+                      >
+                        <CardContent className="flex h-[130px] w-full items-center justify-center p-0">
+                          <Thumb
+                            key={index}
+                            img={img}
+                            onClick={() => onThumbClick(index)}
+                            selected={index === selectedIndex}
+                          />
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
         </div>
         <div className="absolute left-6 top-6 flex items-center">
           <Button

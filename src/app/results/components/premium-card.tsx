@@ -4,6 +4,7 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Tooltip } from "@radix-ui/react-tooltip"
+import { Camera, Dot, Heart, Phone } from "lucide-react"
 
 import { cn, shimmer, toBase64 } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -84,12 +85,12 @@ export function PremiumPropertyCard() {
   const [isFavorite, setIsFavorite] = React.useState(false)
 
   return (
-    <Card className="mb-8 flex flex-col gap-4 rounded-2xl border-0 text-b-accent shadow md:flex-row md:border md:border-[##fea3b1] md:p-4 md:shadow-sm">
+    <Card className="mb-8 flex flex-col gap-4 rounded-2xl border-0 text-b-accent shadow lg:flex-row lg:border lg:border-[##fea3b1] lg:p-4 lg:shadow-sm">
       <CardHeader className="min-w-[256px] p-0">
-        <div className="relative min-h-[202px] min-w-[256px] md:rounded-2xl">
+        <div className="relative min-h-[202px] min-w-[256px] rounded-2xl">
           <Link href="/3" className="absolute inset-0 z-10">
             <Image
-              className="h-[202px] w-full  rounded-t-lg object-cover md:rounded-2xl"
+              className="h-[202px] w-full rounded-t-2xl  object-cover lg:rounded-2xl"
               width={256}
               height={202}
               src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?q=80&w=3267&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -113,18 +114,21 @@ export function PremiumPropertyCard() {
               {isFavorite ? (
                 <Icons.heartFilled className="h-5 w-5 text-[#E11D47]" />
               ) : (
-                <Icons.heart className="h-5 w-5 text-[#E11D47]" />
+                <Heart className="h-5 w-5 text-[#E11D47]" strokeWidth="1.3" />
               )}
             </Button>
             <Button className="absolute bottom-4 right-4 h-6 w-12 bg-white p-0 text-xs uppercase shadow-none hover:bg-white">
-              <Icons.photos className="mr-1 h-4 w-4 text-b-accent" />
+              <Camera
+                className="mr-1 h-5 w-5 text-b-accent"
+                strokeWidth="1.3"
+              />
               <p className="font-bold text-b-accent">10</p>
             </Button>
           </div>
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col justify-between px-4 pb-4 md:p-0">
-        <h3 className="font-bold md:text-lg ">
+      <CardContent className="flex flex-col justify-between px-4 pb-4 lg:p-0">
+        <h3 className="font-bold lg:text-lg ">
           <Link href="/3">
             1 Bedroom Furnished Apartment For Rent At East Legon
           </Link>
@@ -134,7 +138,7 @@ export function PremiumPropertyCard() {
             GHS 27,500{" "}
             <span className="text-sm font-normal text-b-muted">/month</span>
           </p>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <Badge className="bg-[#21c55d] uppercase">verified agent</Badge>
         </div>
         <p className="line-clamp-2 pt-3 text-sm text-b-muted">
@@ -146,11 +150,11 @@ export function PremiumPropertyCard() {
         </p>
         <div className="flex items-center gap-1 pt-2 text-sm">
           <span>2 Beds</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>2 Baths</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>3 Parking</span>
-          <Icons.dot />
+          <Dot className="h-4 w-4" />
           <span>300 m²</span>
         </div>
 
@@ -165,7 +169,7 @@ export function PremiumPropertyCard() {
                 WD
               </AvatarFallback>
             </Avatar>
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
@@ -189,7 +193,7 @@ export function PremiumPropertyCard() {
                 className="flex items-center gap-1.5  font-semibold text-b-accent"
                 size="sm"
               >
-                <Icons.phone className="h-4 w-4" />
+                <Phone className="h-4 w-4" />
                 {/* Contact agent */}
               </Button>
             </ContactModal>
