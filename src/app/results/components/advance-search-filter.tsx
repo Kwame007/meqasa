@@ -136,7 +136,7 @@ export function AdvanceSearchFilter() {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <Select name="bath">
+            {/* <Select name="bath">
               <SelectTrigger className="font-semibold text-b-accent">
                 <SelectValue placeholder="Bathrooms" />
               </SelectTrigger>
@@ -149,7 +149,7 @@ export function AdvanceSearchFilter() {
                   ))}
                 </SelectGroup>
               </SelectContent>
-            </Select>
+            </Select> */}
 
             <Price
               title="Price range"

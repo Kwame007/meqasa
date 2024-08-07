@@ -137,7 +137,8 @@ export default async function Home() {
         </Link>
       </Card>
 
-      <aside className="mt-8 px-3">
+      <aside className=" -mt-24 relative z-50">
+        <SearchFilter />
         <div className="mx-auto my-3 hidden max-w-fit items-center gap-8 rounded-lg px-2 py-1.5 hover:text-b-accent lg:flex">
           {siteConfig.popularLocations.map((str, i) => (
             <Badge
@@ -148,8 +149,6 @@ export default async function Home() {
             </Badge>
           ))}
         </div>
-
-        <SearchFilter />
       </aside>
       <section className="mt-8 hidden w-full px-3 lg:block">
         {/* @ts-ignore */}
@@ -179,10 +178,13 @@ export default async function Home() {
           <BannerGroup />
 
           <section className="mt-8 border-b lg:mt-20 lg:border-0">
-            <div className="px-4 lg:p-0">
+            <div className="mb-8 flex items-center justify-between px-4 lg:p-0 lg:pb-4">
               <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
-                Featured Properties
+                Featured Projects
               </h2>
+              <Link href="/developments" className="font-bold text-b-blue">
+                See all
+              </Link>
             </div>
             <div className="overflow-y-hidden overflow-x-scroll">
               <div className="mt-4 grid grid-flow-col grid-cols-[0px_1fr_1fr_1fr_1fr_4px] gap-3 overflow-x-scroll lg:mt-8 lg:grid-flow-row lg:grid-cols-[repeat(2,minmax(0,1fr))] lg:gap-8">
@@ -196,6 +198,19 @@ export default async function Home() {
                 <div className="mb-4 w-1 lg:hidden" />
               </div>
             </div>
+          </section>
+
+          <section className="mt-8 w-full border-b pb-8 lg:mt-20 lg:border-0 lg:py-0 lg:pb-0 ">
+            <div className="mb-8 flex items-center justify-between px-4 lg:p-0 lg:pb-4">
+              <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
+                Latest Listings
+              </h2>
+              <Link href="/blog" className="font-bold text-b-blue">
+                See all
+              </Link>
+            </div>
+            {/* @ts-ignore */}
+            <PropertyListings listings={listings} />
           </section>
 
           <section className="mt-8 grid border-b lg:mt-20 lg:grid-cols-[736px_minmax(0,1fr)] lg:gap-8 lg:border-0">
@@ -230,18 +245,6 @@ export default async function Home() {
                 ))}
               </div>
             </aside>
-          </section>
-          <section className="mt-8 w-full border-b pb-8 lg:mt-20 lg:border-0 lg:py-0 lg:pb-0 ">
-            <div className="mb-8 flex items-center justify-between px-4 lg:p-0 lg:pb-4">
-              <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
-                Latest Listings
-              </h2>
-              <Link href="/blog" className="font-bold text-b-blue">
-                See all
-              </Link>
-            </div>
-            {/* @ts-ignore */}
-            <PropertyListings listings={listings} />
           </section>
 
           <section className="mt-16 bg-slate-50 py-8  lg:py-10">

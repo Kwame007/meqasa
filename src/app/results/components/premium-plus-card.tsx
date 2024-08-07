@@ -142,8 +142,8 @@ export function PremiumPlusPropertyCard() {
             GHS 27,500{" "}
             <span className="text-sm font-normal text-b-muted">/month</span>
           </p>
-          <Dot className="h-4 w-4" />
-          <Badge className="bg-[#21c55d] uppercase">verified agent</Badge>
+          {/* <Dot className="h-4 w-4" />
+          <Badge className="bg-[#21c55d] uppercase">verified agent</Badge> */}
         </div>
       </CardContent>
       <CardFooter className="flex items-center gap-2 p-4">

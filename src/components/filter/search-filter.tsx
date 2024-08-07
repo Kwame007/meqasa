@@ -44,15 +44,9 @@ export function SearchFilter() {
         className="mx-auto my-0 h-fit w-full rounded-2xl  border-0 p-2 lg:max-w-[928px] lg:p-3"
         style={{ background: "rgba(11,17,52,.65)" }}
       >
-        <Tabs defaultValue="buy" className="w-full">
+        <Tabs defaultValue="rent" className="w-full">
           <div className=" mx-auto my-0 w-4/5 lg:max-w-[460px]">
-            <TabsList className="grid h-fit w-full grid-cols-3 bg-white p-1.5 text-b-accent">
-              <TabsTrigger
-                value="buy"
-                className="font-bold data-[state=active]:bg-primary data-[state=active]:text-white lg:text-base"
-              >
-                Buy
-              </TabsTrigger>
+            <TabsList className="grid h-fit w-full grid-cols-4 bg-white p-1.5 text-b-accent">
               <TabsTrigger
                 value="rent"
                 className="font-bold data-[state=active]:bg-primary data-[state=active]:text-white lg:text-base"
@@ -60,10 +54,23 @@ export function SearchFilter() {
                 Rent
               </TabsTrigger>
               <TabsTrigger
+                value="buy"
+                className="font-bold data-[state=active]:bg-primary data-[state=active]:text-white lg:text-base"
+              >
+                Buy
+              </TabsTrigger>
+
+              <TabsTrigger
                 value="land"
                 className="font-bold data-[state=active]:bg-primary data-[state=active]:text-white lg:text-base"
               >
                 Land
+              </TabsTrigger>
+              <TabsTrigger
+                value="land"
+                className="font-bold data-[state=active]:bg-primary data-[state=active]:text-white lg:text-base"
+              >
+                Short let
               </TabsTrigger>
             </TabsList>
           </div>
@@ -113,9 +120,8 @@ export function SearchFilter() {
                   className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none lg:rounded-l-xl  lg:rounded-r-none "
                 />
                 <Button
-                  size="lg"
                   type="submit"
-                  className="my-1.5 mr-1.5 hidden  rounded-lg bg-primary font-bold  lg:block"
+                  className="my-1.5 mr-1.5 hidden h-12 w-[115px] rounded-lg bg-primary font-bold  md:block"
                 >
                   Search
                 </Button>
@@ -196,7 +202,7 @@ export function SearchFilter() {
                 />
                 <Button
                   type="submit"
-                  className="my-1.5 mr-1.5 hidden h-12 w-[115px] rounded-lg bg-primary font-bold  lg:block"
+                  className="my-1.5 mr-1.5 hidden h-12 w-[115px] rounded-lg bg-primary font-bold  md:block"
                 >
                   Search
                 </Button>
@@ -423,7 +429,7 @@ export function SearchFilter() {
                 />
                 <Button
                   type="submit"
-                  className="my-1.5 mr-1.5 hidden h-12 w-[115px] rounded-lg bg-primary font-bold  lg:block"
+                  className="my-1.5 mr-1.5 hidden h-12 w-[115px] rounded-lg bg-primary font-bold  md:block"
                 >
                   Search
                 </Button>

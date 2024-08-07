@@ -138,8 +138,8 @@ export function PremiumPropertyCard() {
             GHS 27,500{" "}
             <span className="text-sm font-normal text-b-muted">/month</span>
           </p>
-          <Dot className="h-4 w-4" />
-          <Badge className="bg-[#21c55d] uppercase">verified agent</Badge>
+          {/* <Dot className="h-4 w-4" />
+          <Badge className="bg-[#21c55d] uppercase">verified agent</Badge> */}
         </div>
         <p className="line-clamp-2 pt-3 text-sm text-b-muted">
           The Signature Apartments is strategically situated in the heartof
