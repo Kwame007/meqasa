@@ -13,7 +13,7 @@ import StickyNavigation from "@/components/sticky-navigation"
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background lg:static ">
+    <header className="sticky top-0 z-50 w-full border-b bg-background lg:static ">
       <div className="hidden  h-16 items-center bg-[#262636] px-6 lg:flex">
         <span>
           {/* Contact Email */}

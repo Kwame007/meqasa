@@ -6,15 +6,49 @@ import { siteConfig } from "@/config/site"
 import { API_ENDPOINT } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-card"
 import { AgentLogoCarousel } from "@/components/agent-logo-carousel"
 import BannerGroup from "@/components/banner-group"
 import FeaturedProperty from "@/components/featured-property"
 import { SearchFilter } from "@/components/filter/search-filter"
+import { LayoutGrid } from "@/components/layout-grid"
 import MarketNews from "@/components/market-news"
 import { MobileAppBanner } from "@/components/mobile-app-banner"
 import PropertyGuide from "@/components/property-guide"
 import PropertyListings from "@/components/property-listings"
 import RecommendedLocation from "@/components/recommended-location"
+
+const testimonials = [
+  {
+    quote:
+      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
+    name: "Charles Dickens",
+    title: "A Tale of Two Cities",
+  },
+  {
+    quote:
+      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
+    name: "William Shakespeare",
+    title: "Hamlet",
+  },
+  {
+    quote: "All that we see or seem is but a dream within a dream.",
+    name: "Edgar Allan Poe",
+    title: "A Dream Within a Dream",
+  },
+  {
+    quote:
+      "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
+    name: "Jane Austen",
+    title: "Pride and Prejudice",
+  },
+  {
+    quote:
+      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
+    name: "Herman Melville",
+    title: "Moby-Dick",
+  },
+]
 
 async function getAgentsLogos(): Promise<AgentLogo[]> {
   try {
@@ -137,7 +171,7 @@ export default async function Home() {
         </Link>
       </Card>
 
-      <aside className=" -mt-24 relative z-50">
+      <aside className=" relative z-40 mt-8 px-3 md:-mt-24">
         <SearchFilter />
         <div className="mx-auto my-3 hidden max-w-fit items-center gap-8 rounded-lg px-2 py-1.5 hover:text-b-accent lg:flex">
           {siteConfig.popularLocations.map((str, i) => (
@@ -150,9 +184,14 @@ export default async function Home() {
           ))}
         </div>
       </aside>
-      <section className="mt-8 hidden w-full px-3 lg:block">
+      <section className="my-16 hidden w-full px-3 lg:block">
         {/* @ts-ignore */}
-        <AgentLogoCarousel agentLogos={agentsLogos} />
+        {/* <AgentLogoCarousel agentLogos={agentsLogos} /> */}
+        <InfiniteMovingCards
+          items={testimonials}
+          direction="right"
+          speed="slow"
+        />
       </section>
       <div className="mt-8 flex px-0 lg:mx-auto lg:max-w-[1400px] lg:gap-8">
         <section className="w-full lg:max-w-[1143px] ">
@@ -175,7 +214,32 @@ export default async function Home() {
           </Card>
 
           {/* @ts-ignore */}
-          <BannerGroup />
+          {/* <BannerGroup /> */}
+          <LayoutGrid
+            cards={[
+              {
+                id: 1,
+                content: <div>test</div>,
+                className: "",
+                thumbnail:
+                  "https://dve7rykno93gs.cloudfront.net/pieoq/1072750400.webp",
+              },
+              {
+                id: 2,
+                content: <div>test</div>,
+                className: "",
+                thumbnail:
+                  "https://dve7rykno93gs.cloudfront.net/pieoq/1027645745.webp",
+              },
+              {
+                id: 3,
+                content: <div>test</div>,
+                className: "",
+                thumbnail:
+                  "https://dve7rykno93gs.cloudfront.net/pieoq/1093075785.webp",
+              },
+            ]}
+          />
 
           <section className="mt-8 border-b lg:mt-20 lg:border-0">
             <div className="mb-8 flex items-center justify-between px-4 lg:p-0 lg:pb-4">
@@ -247,7 +311,7 @@ export default async function Home() {
             </aside>
           </section>
 
-          <section className="mt-16 bg-slate-50 py-8  lg:py-10">
+          <section className="mt-16 bg-slate-50 p-8  lg:py-10">
             <div className="px-0 lg:mx-auto lg:max-w-[1400px]">
               <div className="grid grid-cols-[1fr_70px] items-center  justify-between gap-8 px-4 lg:p-0">
                 <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">
@@ -354,7 +418,7 @@ export default async function Home() {
                 >
                   <Image
                     alt="Luxury Real Estate Property"
-                    src="https://dve7rykno93gs.cloudfront.net/pieoq/56799905"
+                    src="https://dve7rykno93gs.cloudfront.net/pieoq/436366937"
                     fill
                     sizes="225px"
                     className="h-full w-full object-cover"

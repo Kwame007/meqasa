@@ -70,7 +70,7 @@ export function SearchFilter() {
                 value="land"
                 className="font-bold data-[state=active]:bg-primary data-[state=active]:text-white lg:text-base"
               >
-                Short let
+                Short Let
               </TabsTrigger>
             </TabsList>
           </div>

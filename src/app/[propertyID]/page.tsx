@@ -35,6 +35,7 @@ import ContactFixed from "@/components/contact-fixed"
 import { DynamicCarousel } from "@/components/DynamicCarousel"
 import { Icons } from "@/components/icons"
 import { PropertyUnitCard } from "@/components/property-unit-card"
+import SafetyTipsCard from "@/components/safety-tips"
 import LeaseOptions from "@/app/[propertyID]/components/lease-options"
 import MortgageCalculator from "@/app/[propertyID]/components/mortgage-calculator"
 import { PropertyDescription } from "@/app/[propertyID]/components/project-description"
@@ -252,6 +253,10 @@ export default async function Page({
               </div>
             </Card>
           </aside>
+
+          <section className="mt-8 px-4 text-b-accent lg:mt-20 lg:px-0">
+            <SafetyTipsCard />
+          </section>
           <section className="mt-8 px-4 text-b-accent lg:mt-20 lg:px-0">
             <h2 className="mb-6 text-xl font-bold capitalize text-inherit lg:text-2xl">
               Description
@@ -264,10 +269,11 @@ export default async function Page({
               <div className="items-center px-4 py-6 lg:flex lg:gap-3 lg:p-0">
                 <p className=" line-clamp-1 text-sm text-b-muted-dark lg:text-base lg:font-medium">
                   Listed by{" "}
-                  <Link href="/">
-                    <span className="underline decoration-slate-300  decoration-dashed underline-offset-4">
-                      {propertyDetails?.agent.name}
-                    </span>
+                  <Link
+                    href="/"
+                    className="underline decoration-slate-300  decoration-dashed underline-offset-4 transition-colors hover:text-blue-500 hover:decoration-blue-500"
+                  >
+                    <span className="">{propertyDetails?.agent.name}</span>
                   </Link>
                 </p>
               </div>
@@ -285,10 +291,7 @@ export default async function Page({
             <div className="items-center gap-8 p-4 lg:flex lg:px-0 lg:py-10">
               <div className="flex h-[66px] w-full items-center justify-center gap-4 rounded-lg bg-[#d7e9ff] px-4 lg:justify-between">
                 <div className="hidden rounded-full bg-[#1e65ff] p-1 lg:block">
-                  <LightbulbIcon
-                    className="h-5 w-5 text-[#d7e9ff]"
-                    strokeWidth="1.3"
-                  />
+                  <Heart className="h-5 w-5 text-[#d7e9ff]" strokeWidth="1.3" />
                 </div>
                 <p className="text lg:font- w-full">
                   Like this property? Add as favorites and compare listings
@@ -310,7 +313,6 @@ export default async function Page({
                 /> */}
               </div>
             </Card>
-            {/* <PropertyVideo /> */}
           </section>
 
           <section className="mt-8 px-4 text-b-accent lg:mt-20 lg:px-0">

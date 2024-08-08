@@ -7,6 +7,17 @@ import { Dot, MapPin, ShieldCheck } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { AvailableUnitsCarousel } from "@/components/available-unit"
 import { Breadcrumbs } from "@/components/bread-crumbs"
 import { ClientContactForm } from "@/components/client-contact-form"
@@ -166,9 +177,43 @@ export default async function page() {
                   </span>
                 </div>
               </div>
-              <Button className="hidden rounded-md bg-b-accent font-semibold hover:bg-b-accent lg:block">
-                Get Brochure
-              </Button>
+
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="hidden rounded-md bg-b-accent font-semibold hover:bg-b-accent lg:block">
+                    Get Brochure
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle className="text-b-accent">
+                      Brochure Request
+                    </DialogTitle>
+                    <DialogDescription>
+                      Enter email to get brochure. Click save when you&apos;re
+                      done.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="items-center">
+                      <Label
+                        htmlFor="email"
+                        className="mb-4 block text-b-accent"
+                      >
+                        Email
+                      </Label>
+                      <Input
+                        id="email"
+                        value="test@gmail.com"
+                        className="col-span-3"
+                      />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button type="submit">Save changes</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           <Test />
