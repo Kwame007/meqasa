@@ -139,6 +139,21 @@ export const siteConfig = {
     "Central",
     "Northern",
   ],
+  priceRange: [
+    { label: "100,000", value: "100000" },
+    { label: "200,000", value: "200000" },
+    { label: "300,000", value: "300000" },
+    { label: "400,000", value: "400000" },
+    { label: "500,000", value: "500000" },
+    { label: "600,000", value: "600000" },
+    { label: "700,000", value: "700000" },
+    { label: "800,000", value: "800000" },
+    { label: "900,000", value: "900000" },
+    { label: "1,000,000", value: "1000000" },
+    { label: "1,100,000", value: "1100000" },
+    { label: "1,200,000", value: "1200000" },
+    { label: "1,300,000", value: "1300000" },
+  ],
   footerNavCompany: [
     {
       title: "company",

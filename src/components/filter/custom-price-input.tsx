@@ -6,6 +6,15 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const PriceSelectContext = React.createContext<{
   minPrice: string
@@ -41,7 +50,10 @@ function PriceSelect({ children }: { children: React.ReactNode }) {
         setMinPrice,
       }}
     >
-      <div className=" relative w-max min-w-max max-w-[200px]" ref={ref}>
+      <div
+        className=" relative min-w-[200px] max-w-[200px] font-medium"
+        ref={ref}
+      >
         {children}
       </div>
     </PriceSelectContext.Provider>
@@ -71,7 +83,7 @@ const Trigger = ({
   return (
     <Button
       className={cn(
-        "flex h-11 min-w-fit max-w-fit cursor-pointer items-center justify-between rounded-lg border bg-transparent p-[10px] text-base font-semibold leading-[22px] text-b-accent outline-none hover:bg-transparent",
+        "flex h-11 min-w-fit max-w-fit cursor-pointer items-center justify-between rounded-lg border bg-transparent p-[10px] text-base font-medium leading-[22px] text-b-accent outline-none hover:bg-transparent",
         className
       )}
       onClick={(e) => {
@@ -101,9 +113,11 @@ const Portal = ({ children }: { children: React.ReactElement }) => {
 const Content = ({
   unit,
   placeholder,
+  range,
 }: {
   placeholder: { min: string; max: string }
   unit: string
+  range: { value: string; label: string }[]
 }) => {
   const { maxPrice, minPrice, setMaxPrice, setMinPrice } =
     useContext(PriceSelectContext)
@@ -125,14 +139,28 @@ const Content = ({
           <span className="flex items-center rounded-l-md border border-r-0 bg-[#f8f8f8] px-2 text-xs text-b-accent">
             {unit}
           </span>
-          <Input
+          {/* <Input
             id="minPrice"
             name="min"
             className="h-[42px] w-[112px] rounded-md rounded-l-none shadow-none"
             placeholder={placeholder.min}
             value={minPrice}
             onChange={handleMinPrice}
-          />
+          /> */}
+          <Select onValueChange={(value) => setMinPrice(value)}>
+            <SelectTrigger className="w-[180px] rounded-l-none border-l-0">
+              <SelectValue placeholder={placeholder.min} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {range.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </Label>
       </div>
       <div className="h-[1px] w-1.5 bg-b-accent">&nbsp;</div>
@@ -141,14 +169,28 @@ const Content = ({
           <span className="flex items-center rounded-l-md border border-r-0 bg-[#f8f8f8] px-2 text-xs text-b-accent">
             {unit}
           </span>
-          <Input
+          {/* <Input
             id="maxPrice"
             name="max"
             className="h-[42px] w-[112px] rounded-md rounded-l-none shadow-none"
             placeholder={placeholder.max}
             value={maxPrice}
             onChange={handleMaxPrice}
-          />
+          /> */}
+          <Select onValueChange={(value) => setMaxPrice(value)}>
+            <SelectTrigger className="w-[180px] rounded-l-none border-l-0">
+              <SelectValue placeholder={placeholder.max} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {range.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </Label>
       </div>
     </div>
@@ -164,17 +206,23 @@ export function PriceInput({
   placeholder,
   unit,
   className,
+  range,
 }: {
   placeholder: { min: string; max: string }
   unit: string
   title: string
   className?: string
+  range: { value: string; label: string }[]
 }) {
   return (
     <PriceSelect>
       <PriceSelect.Trigger title={title} unit={unit} className={className} />
       <PriceSelect.Portal>
-        <PriceSelect.Content placeholder={placeholder} unit={unit} />
+        <PriceSelect.Content
+          placeholder={placeholder}
+          unit={unit}
+          range={range}
+        />
       </PriceSelect.Portal>
     </PriceSelect>
   )

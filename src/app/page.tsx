@@ -188,7 +188,7 @@ export default async function Home() {
         {/* @ts-ignore */}
         {/* <AgentLogoCarousel agentLogos={agentsLogos} /> */}
         <InfiniteMovingCards
-          items={testimonials}
+          items={agentsLogos}
           direction="right"
           speed="slow"
         />

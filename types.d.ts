@@ -71,6 +71,7 @@ type DeveloperType = {
     phone: string
     email: string
     logo: string
+    brandColor: string
   }
 }
 

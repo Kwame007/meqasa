@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+import Link from "next/link"
 import {
   Dot,
   FacebookIcon,
@@ -9,14 +11,12 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
 
-import ContactModal from "@/components/contact-modal"
-import { Icons } from "@/components/icons"
+import { cn, shimmer, toBase64 } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { shimmer, toBase64 } from "@/lib/utils"
+import ContactModal from "@/components/contact-modal"
+import { Icons } from "@/components/icons"
 
 const data = {
   title:
@@ -90,11 +90,35 @@ export function DeveloperCard({
   projects,
   socials,
   units,
+  developer,
   website,
 }: DeveloperType) {
+  console.log(developer.brandColor)
+  
   return (
-    <Card className="flex flex-col overflow-hidden rounded-xl border-0 text-b-accent shadow md:border md:p-3 md:shadow-sm">
-      <CardContent className=" flex flex-col gap-3 p-0 md:flex-row">
+    <Card className="flex flex-col overflow-hidden rounded-xl border-0 text-b-accent shadow md:border md:shadow-sm">
+      <div
+        className={`relative flex h-14 items-center bg-[#A48851] justify-between px-3 font-bold text-white`}
+      >
+        <h2> {name}</h2>
+        <div className="absolute right-3 top-6 max-h-[60px] w-full  max-w-[60px] overflow-hidden rounded-full shadow">
+          <div className="h-full w-full">
+            <Image
+              className="h-[60px] w-[60px] rounded-full object-cover"
+              width={170}
+              height={100}
+              src={logo}
+              alt={`${name} logo`}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(100, 88)
+              )}`}
+              sizes="120px"
+            />
+          </div>
+        </div>
+      </div>
+      <CardContent className=" flex flex-col gap-3 p-0 md:flex-row md:p-3">
         <div className="flex w-full flex-col md:min-w-[200px] md:max-w-[200px]">
           <div className="w-full rounded-md">
             <Link href={`developers/${id}`}>
@@ -115,27 +139,42 @@ export function DeveloperCard({
           <div className="mt-3 flex w-full items-center gap-3 p-3 text-b-muted md:p-0">
             {socials.facebook && (
               <Link href="/">
-                <FacebookIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3" />
+                <FacebookIcon
+                  className="h-5 w-5 transition md:hover:text-primary"
+                  strokeWidth="1.3"
+                />
               </Link>
             )}
             {socials.instagram && (
               <Link href="/">
-                <InstagramIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>
+                <InstagramIcon
+                  className="h-5 w-5 transition md:hover:text-primary"
+                  strokeWidth="1.3"
+                />
               </Link>
             )}
             {socials.twitter && (
               <Link href="/">
-                <TwitterIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>
+                <TwitterIcon
+                  className="h-5 w-5 transition md:hover:text-primary"
+                  strokeWidth="1.3"
+                />
               </Link>
             )}
             {socials.linkedin && (
               <Link href="/">
-                <LinkedinIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>
+                <LinkedinIcon
+                  className="h-5 w-5 transition md:hover:text-primary"
+                  strokeWidth="1.3"
+                />
               </Link>
             )}
             {socials.youtube && (
               <Link href="/">
-                <YoutubeIcon className="h-5 w-5 transition md:hover:text-primary" strokeWidth="1.3"/>{" "}
+                <YoutubeIcon
+                  className="h-5 w-5 transition md:hover:text-primary"
+                  strokeWidth="1.3"
+                />{" "}
               </Link>
             )}
           </div>
@@ -149,7 +188,7 @@ export function DeveloperCard({
                 </h3>
               </Link>
               <div className="mb-1.5 flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-primary" strokeWidth="1.3"/>{" "}
+                <MapPin className="h-5 w-5 text-primary" strokeWidth="1.3" />{" "}
                 <p className="line-clamp-1 text-sm text-b-muted">{location}</p>
               </div>
               <div className="mb-2 flex items-center gap-1.5 text-sm font-medium md:text-base">
@@ -158,7 +197,7 @@ export function DeveloperCard({
                 <span>{"1"} projects</span>
               </div>
             </div>
-            <div className="max-h-[60px] w-full max-w-[60px] overflow-hidden rounded-md border shadow-sm">
+            {/* <div className="max-h-[60px] w-full max-w-[60px] overflow-hidden rounded-md border shadow-sm">
               <div className="h-full w-full">
                 <Image
                   className="h-full w-full rounded-sm object-contain"
@@ -173,7 +212,7 @@ export function DeveloperCard({
                   sizes="120px"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
           <p className="line-clamp-2 text-sm text-b-muted">{description}</p>
         </div>
@@ -181,7 +220,7 @@ export function DeveloperCard({
       <CardFooter className="flex items-center justify-between gap-3 p-3">
         <div className="flex h-fit w-full items-end justify-end">
           <ContactModal data={data?.agent}>
-            <Button className="w-full">Contact agent</Button>
+            <Button className="w-full">Contact Developer</Button>
           </ContactModal>
         </div>
       </CardFooter>

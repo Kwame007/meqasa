@@ -1,8 +1,17 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
+import Image from "next/image"
 
 import { cn } from "@/lib/utils"
+
+import { Card, CardContent } from "./card"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./tooltip"
 
 export const InfiniteMovingCards = ({
   items,
@@ -12,9 +21,8 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
-    quote: string
-    name: string
-    title: string
+    src: string
+    label: string
   }[]
   direction?: "left" | "right"
   speed?: "fast" | "normal" | "slow"
@@ -74,7 +82,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20  max-w-full overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_40%,transparent)] ",
+        "scroller relative z-20  max-w-full overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] ",
         className
       )}
     >
@@ -87,34 +95,26 @@ export const InfiniteMovingCards = ({
         )}
       >
         {items.map((item, idx) => (
-          <li
-            className="relative w-[350px] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-700 px-8 py-6 md:w-[450px]"
-            style={{
-              background:
-                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
-            }}
-            key={item.name}
-          >
-            <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className=" relative z-20 text-sm font-normal leading-[1.6] text-gray-100">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className=" text-sm font-normal leading-[1.6] text-gray-400">
-                    {item.name}
-                  </span>
-                  <span className=" text-sm font-normal leading-[1.6] text-gray-400">
-                    {item.title}
-                  </span>
-                </span>
-              </div>
-            </blockquote>
-          </li>
+          <Card className=" rounded-xl border shadow-none" key={item.label}>
+            <CardContent className="flex max-h-[120px] min-h-[120px] min-w-[120px] max-w-[120px] items-center justify-center overflow-hidden p-4 ">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Image
+                      alt={item.label}
+                      src={item.src}
+                      width={100}
+                      height={50}
+                      className="h-full w-full object-contain"
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="z-20">{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </CardContent>
+          </Card>
         ))}
       </ul>
     </div>

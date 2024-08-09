@@ -23,7 +23,8 @@ export const formatToGhsCurrency = createNumberFormatter("en-GH", {
 })
 
 // Constant for the API endpoint
-export const API_ENDPOINT = "https://cuddly-meme-git-main-kwame007.vercel.app"
+export const API_ENDPOINT =
+  "https://cuddly-meme-jjuygqmty-kwame007s-projects.vercel.app"
 
 export const shimmer = (w: number, h: number) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

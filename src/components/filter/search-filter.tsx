@@ -67,7 +67,7 @@ export function SearchFilter() {
                 Land
               </TabsTrigger>
               <TabsTrigger
-                value="land"
+                value="short-let"
                 className="font-bold data-[state=active]:bg-primary data-[state=active]:text-white lg:text-base"
               >
                 Short Let
@@ -117,7 +117,9 @@ export function SearchFilter() {
                   id="query"
                   name="search"
                   placeholder="Search for location"
-                  className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none lg:rounded-l-xl  lg:rounded-r-none "
+                  className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none focus-visible:ring-0  focus-visible:ring-transparent
+                  focus-visible:ring-offset-0 lg:rounded-l-xl lg:rounded-r-none 
+                  "
                 />
                 <Button
                   type="submit"
@@ -128,7 +130,7 @@ export function SearchFilter() {
               </div>
               <div className="relative mx-auto mt-3 hidden max-w-max items-end justify-center gap-2 py-1 lg:flex">
                 <Select name="type">
-                  <SelectTrigger className="h- h-5 min-w-fit cursor-pointer rounded-lg border-none bg-transparent py-0 text-base font-semibold text-white">
+                  <SelectTrigger className="h-5 min-w-[150px] max-w-[150px] cursor-pointer rounded-none border-none bg-transparent  py-0 text-base font-medium text-white focus:border-0 focus:ring-0 focus:ring-transparent">
                     <SelectValue placeholder="Property type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -146,7 +148,7 @@ export function SearchFilter() {
                   className="h-[20px] bg-[#9A9EB5]"
                 />
                 <Select name="bed">
-                  <SelectTrigger className="h-5 cursor-pointer rounded-lg border-none bg-transparent py-0 text-base font-semibold text-white">
+                  <SelectTrigger className="h-5 min-w-[150px] max-w-fit cursor-pointer rounded-none border-none bg-transparent py-0 text-base font-medium text-white focus:border-0 focus:ring-0 focus:ring-transparent">
                     <SelectValue placeholder="Bedrooms" />
                   </SelectTrigger>
                   <SelectContent>
@@ -168,6 +170,7 @@ export function SearchFilter() {
                   title="Price range"
                   unit="GH₵"
                   placeholder={{ min: "Min.price", max: "Max.price" }}
+                  range={siteConfig.priceRange}
                   className="h-[20px] border-none px-5 py-0 text-white"
                 />
               </div>
@@ -198,7 +201,9 @@ export function SearchFilter() {
                   id="query"
                   name="search"
                   placeholder="Search for location"
-                  className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none lg:rounded-l-xl  lg:rounded-r-none "
+                  className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none focus-visible:ring-0  focus-visible:ring-transparent
+                  focus-visible:ring-offset-0 lg:rounded-l-xl lg:rounded-r-none 
+                  "
                 />
                 <Button
                   type="submit"
@@ -209,7 +214,7 @@ export function SearchFilter() {
               </div>
               <div className="relative mx-auto mt-3 hidden max-w-max items-end justify-center gap-2 py-1  lg:flex">
                 <Select name="type">
-                  <SelectTrigger className="h-5 min-w-fit max-w-fit cursor-pointer rounded-lg border-none bg-transparent py-0 text-base font-semibold text-white">
+                  <SelectTrigger className="h-5 min-w-[150px] max-w-[150px] cursor-pointer rounded-none border-none bg-transparent  py-0 text-base font-medium text-white focus:border-0 focus:ring-0 focus:ring-transparent">
                     <SelectValue placeholder="Property type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -227,7 +232,7 @@ export function SearchFilter() {
                   className="h-[20px] bg-[#9A9EB5]"
                 />
                 <Select name="bed">
-                  <SelectTrigger className="h-5 min-w-fit max-w-fit cursor-pointer rounded-lg border-none bg-transparent py-0 text-base font-semibold text-white">
+                  <SelectTrigger className="h-5 min-w-[150px] max-w-fit cursor-pointer rounded-none border-none bg-transparent py-0 text-base font-medium text-white focus:border-0 focus:ring-0 focus:ring-transparent">
                     <SelectValue placeholder="Bedrooms" />
                   </SelectTrigger>
                   <SelectContent>
@@ -249,6 +254,7 @@ export function SearchFilter() {
                   title="Price range"
                   unit="GH₵"
                   placeholder={{ min: "Min.price", max: "Max.price" }}
+                  range={siteConfig.priceRange}
                   className="h-[20px] border-none px-5 py-0 text-white"
                 />
 
@@ -258,7 +264,7 @@ export function SearchFilter() {
                 />
 
                 <Popover>
-                  <PopoverTrigger className="h- flex min-w-fit max-w-fit cursor-pointer items-center justify-between rounded-lg text-base font-semibold text-white">
+                  <PopoverTrigger className="flex min-w-[150px] max-w-[150px] cursor-pointer items-center  rounded-lg text-base font-medium text-white">
                     More filters <Icons.filter className="ml-2 h-5 w-5" />
                   </PopoverTrigger>
                   <PopoverContent className="w-[400px] p-4">
@@ -425,7 +431,9 @@ export function SearchFilter() {
                   id="query"
                   name="search"
                   placeholder="Search for location"
-                  className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none lg:rounded-l-xl  lg:rounded-r-none "
+                  className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none focus-visible:ring-0  focus-visible:ring-transparent
+                  focus-visible:ring-offset-0 lg:rounded-l-xl lg:rounded-r-none 
+                  "
                 />
                 <Button
                   type="submit"
@@ -439,6 +447,7 @@ export function SearchFilter() {
                   title="Price range"
                   unit="GH₵"
                   placeholder={{ min: "Min.price", max: "Max.price" }}
+                  range={siteConfig.priceRange}
                   className="h-[20px] border-none px-5 py-0 text-white"
                 />
                 <Separator
@@ -449,8 +458,239 @@ export function SearchFilter() {
                   title="Area range"
                   unit="m²"
                   placeholder={{ min: "Min.area", max: "Max.area" }}
+                  range={siteConfig.priceRange}
                   className="h-[20px] border-none px-5 py-0 text-white"
                 />
+              </div>
+            </form>
+          </TabsContent>
+          <TabsContent value="short-let">
+            <form
+              action=""
+              onSubmit={(e) => {
+                e.preventDefault()
+                navigate.push("/results/1")
+              }}
+            >
+              <Input
+                type="radio"
+                value="short-let"
+                name="short-let"
+                className="hidden"
+                checked
+                readOnly
+              />
+              <div className="relative mt-3 hidden h-[60px] w-full items-center rounded-xl bg-white shadow-sm lg:flex">
+                <Label htmlFor="query" className="sr-only">
+                  search
+                </Label>
+                <Icons.search className="absolute left-4" fill="#1b235a" />
+                <Input
+                  id="query"
+                  name="search"
+                  placeholder="Search for location"
+                  className="h-full rounded-xl border-none py-4 pl-[52px] pr-4 text-base font-light text-b-accent shadow-none focus-visible:ring-0  focus-visible:ring-transparent
+                  focus-visible:ring-offset-0 lg:rounded-l-xl lg:rounded-r-none 
+                  "
+                />
+                <Button
+                  type="submit"
+                  className="my-1.5 mr-1.5 hidden h-12 w-[115px] rounded-lg bg-primary font-bold  md:block"
+                >
+                  Search
+                </Button>
+              </div>
+              <div className="relative mx-auto mt-3 hidden max-w-max items-end justify-center gap-2 py-1  lg:flex">
+                <Select name="type">
+                  <SelectTrigger className="h-5 min-w-[150px] max-w-[150px] cursor-pointer rounded-none border-none bg-transparent  py-0 text-base font-medium text-white focus:border-0 focus:ring-0 focus:ring-transparent">
+                    <SelectValue placeholder="Property type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {siteConfig.propertyType.map(({ value, label }) => (
+                        <SelectItem value={value} key={value}>
+                          {label}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                <Separator
+                  orientation="vertical"
+                  className="h-[20px] bg-[#9A9EB5]"
+                />
+                <Select name="bed">
+                  <SelectTrigger className="h-5 min-w-[150px] max-w-fit cursor-pointer rounded-none border-none bg-transparent py-0 text-base font-medium text-white focus:border-0 focus:ring-0 focus:ring-transparent">
+                    <SelectValue placeholder="Bedrooms" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {siteConfig.propertyBed.map(({ value, label }) => (
+                        <SelectItem value={value} key={value}>
+                          {label}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                <Separator
+                  orientation="vertical"
+                  className="h-[20px] bg-[#9A9EB5]"
+                />
+
+                <PriceInput
+                  title="Price range"
+                  unit="GH₵"
+                  placeholder={{ min: "Min.price", max: "Max.price" }}
+                  range={siteConfig.priceRange}
+                  className="h-[20px] border-none px-5 py-0 text-white"
+                />
+
+                <Separator
+                  orientation="vertical"
+                  className="h-[20px] bg-[#9A9EB5]"
+                />
+
+                <Popover>
+                  <PopoverTrigger className="flex min-w-[150px] max-w-[150px] cursor-pointer items-center  rounded-lg text-base font-medium text-white">
+                    More filters <Icons.filter className="ml-2 h-5 w-5" />
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[400px] p-4">
+                    <div className="mb-4 grid grid-cols-2 items-center gap-2">
+                      <Select name="period">
+                        <SelectTrigger className="h-11 min-w-fit font-semibold text-b-accent">
+                          <SelectValue placeholder="Rent period" />
+                        </SelectTrigger>
+                        <SelectContent className="text-b-accent">
+                          <SelectGroup>
+                            {[
+                              { label: "Daily", value: "day" },
+                              { label: "Weekly", value: "week" },
+                              { label: "Up to 6 months", value: "month" },
+                              { label: "12 months plus", value: "year" },
+                            ].map((str, i) => (
+                              <SelectItem
+                                value={str.value}
+                                className="py-1.5 hover:text-b-accent"
+                                key={i}
+                              >
+                                {str.label}
+                              </SelectItem>
+                            ))}
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+
+                      <Select name="sort">
+                        <SelectTrigger className="h-11 min-w-full font-semibold text-b-accent">
+                          <SelectValue placeholder="Sort by" />
+                        </SelectTrigger>
+                        <SelectContent className="border-none text-b-accent shadow-spread">
+                          <SelectGroup>
+                            {[
+                              { label: "New to old", value: "new" },
+                              { label: "Old to new", value: "old" },
+                              { label: "Lower to higher", value: "low" },
+                              { label: "Higher to lower", value: "high" },
+                            ].map((str, i) => (
+                              <SelectItem
+                                value={str.value}
+                                className="py-1.5 hover:text-b-accent"
+                                key={i}
+                              >
+                                {str.label}
+                              </SelectItem>
+                            ))}
+                          </SelectGroup>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="border-b pb-4 ">
+                      <RadioGroup
+                        defaultValue="1"
+                        name="beds"
+                        className="flex flex-wrap items-center"
+                      >
+                        <div className="flex items-center space-x-1 rounded-full border px-2 py-1.5 ">
+                          <RadioGroupItem value="1" id="r1" />
+                          <Label
+                            htmlFor="r1"
+                            className="cursor-pointer text-xs"
+                          >
+                            1 Bedroom
+                          </Label>
+                        </div>
+                        <div className="flex items-center space-x-1 rounded-full border px-2 py-1.5 ">
+                          <RadioGroupItem value="2" id="r2" />
+                          <Label
+                            htmlFor="r2"
+                            className="cursor-pointer text-xs"
+                          >
+                            2 Bedrooms
+                          </Label>
+                        </div>
+                        <div className="flex items-center space-x-1 rounded-full border px-2 py-1.5 ">
+                          <RadioGroupItem value="3" id="r3" />
+                          <Label
+                            htmlFor="r3"
+                            className="cursor-pointer text-xs"
+                          >
+                            3 Bedrooms
+                          </Label>
+                        </div>
+                        <div className="flex items-center space-x-1 rounded-full border px-2 py-1.5 ">
+                          <RadioGroupItem value="4" id="r4" />
+                          <Label
+                            htmlFor="r4"
+                            className="cursor-pointer text-xs"
+                          >
+                            4 Bedrooms
+                          </Label>
+                        </div>
+                        <div className="flex items-center space-x-1 rounded-full border px-2 py-1.5 ">
+                          <RadioGroupItem value="5" id="r5" />
+                          <Label
+                            htmlFor="r5"
+                            className="cursor-pointer text-xs"
+                          >
+                            5 Bedrooms
+                          </Label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+                    <div className="flex items-start justify-between pt-8 text-sm font-semibold text-b-accent">
+                      <span>Only show...</span>
+                      <div>
+                        <div className="mb-2 flex items-center space-x-2">
+                          <Checkbox
+                            id="furnished"
+                            name="furn"
+                            className="data-[state=checked]:border-0 data-[state=checked]:bg-primary data-[state=checked]:text-white"
+                          />
+                          <label
+                            htmlFor="furnished"
+                            className="cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            Furnished Properties
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="owner"
+                            name="own"
+                            className="data-[state=checked]:border-0 data-[state=checked]:bg-primary data-[state=checked]:text-white"
+                          />
+                          <label
+                            htmlFor="owner"
+                            className="cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            For by Owner
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </PopoverContent>
+                </Popover>
               </div>
             </form>
           </TabsContent>
