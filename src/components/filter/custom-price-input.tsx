@@ -119,18 +119,18 @@ const Content = ({
   unit: string
   range: { value: string; label: string }[]
 }) => {
-  const { maxPrice, minPrice, setMaxPrice, setMinPrice } =
+  const {setMaxPrice, setMinPrice } =
     useContext(PriceSelectContext)
 
   // handle min-price change
-  function handleMinPrice(e: React.ChangeEvent<HTMLInputElement>) {
-    setMinPrice(e.target.value)
-  }
+  // function handleMinPrice(e: React.ChangeEvent<HTMLInputElement>) {
+  //   setMinPrice(e.target.value)
+  // }
 
   // handle max-price change
-  function handleMaxPrice(e: React.ChangeEvent<HTMLInputElement>) {
-    setMaxPrice(e.target.value)
-  }
+  // function handleMaxPrice(e: React.ChangeEvent<HTMLInputElement>) {
+  //   setMaxPrice(e.target.value)
+  // }
 
   return (
     <div className="flex items-center gap-3">

@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-
+import {motion, useScroll, useTransform } from "framer-motion"
 interface MainNavProps {
   items: (
     | {
@@ -32,6 +32,16 @@ interface MainNavProps {
 }
 
 export function MainNav({ items }: MainNavProps) {
+  const { scrollYProgress } = useScroll();
+  const background = useTransform(
+    scrollYProgress,
+    [0, 100],
+    ["rgba(0, 183, 255, 0)", "rgba(0, 183, 255, 1)"]
+  );
+  const height = useTransform(scrollYProgress, [0, 100], [120, 60]);
+console.log(scrollYProgress)
+console.log(background)
+console.log(height)
   // create navigation link
   const navLink = siteConfig.mainNav.map((link, i) => {
     const navTitle = link.links?.map(
@@ -82,9 +92,9 @@ export function MainNav({ items }: MainNavProps) {
   })
 
   return (
-    <div className="primary-header hidden h-[60px] w-full items-center justify-center text-blue-950 lg:flex">
+    <motion.div className="primary-header hidden h-[60px] w-full items-center justify-center text-blue-950 lg:flex">
       {navLink}
-    </div>
+    </motion.div>
   )
 }
 

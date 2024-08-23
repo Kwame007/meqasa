@@ -2,6 +2,7 @@
 
 import React from "react"
 
+import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -32,8 +33,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { FullscreenModal } from "@/components/custom-modal"
+import { PriceInput } from "@/components/filter/custom-price-input"
 import { Icons } from "@/components/icons"
-import { Price } from "@/app/results/components/price-select"
 
 const options = [
   { label: "Property type", value: "all" },
@@ -56,14 +57,14 @@ const options2 = [
   { label: "4 Beds", value: "4" },
   { label: "5+ Beds", value: "5" },
 ]
-const options5 = [
-  { label: "Baths", value: "bath" },
-  { label: "1 Bath", value: "1 b" },
-  { label: "2 Baths", value: "2 b" },
-  { label: "3 Baths", value: "3 b" },
-  { label: "4 Baths", value: "4 b" },
-  { label: "5+ Baths", value: "5 b" },
-]
+// const options5 = [
+//   { label: "Baths", value: "bath" },
+//   { label: "1 Bath", value: "1 b" },
+//   { label: "2 Baths", value: "2 b" },
+//   { label: "3 Baths", value: "3 b" },
+//   { label: "4 Baths", value: "4 b" },
+//   { label: "5+ Baths", value: "5 b" },
+// ]
 const options3 = [
   { label: "For sale", value: "sale" },
   { label: "For rent", value: "rent" },
@@ -72,7 +73,7 @@ const options3 = [
 export function AdvanceSearchFilter() {
   return (
     <>
-      <Card className="sticky top-[60px] z-50 hidden h-16 items-center border-b rounded-none px-6 shadow-none md:flex">
+      <Card className="sticky top-[60px] z-50 hidden h-[70px] animate-in items-center rounded-none border-b border-t-0 px-6 shadow-none md:flex">
         <aside className="w-full">
           <form
             action=""
@@ -85,7 +86,7 @@ export function AdvanceSearchFilter() {
           >
             <div className="flex h-[46px]">
               <Select name="category" defaultValue="sale">
-                <SelectTrigger className=" w-28 rounded-r-none border-r-0 font-semibold text-b-accent">
+                <SelectTrigger className=" w-28 rounded-r-none border-r-0 text-b-accent h-11 font-medium leading-[22px]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -104,12 +105,12 @@ export function AdvanceSearchFilter() {
                   type="search"
                   name="search"
                   placeholder="Search location"
-                  className=" rounded-l-none py-4 pl-10"
+                  className=" rounded-l-none py-4 pl-10 h-11 font-medium leading-[22px]"
                 />
               </div>
             </div>
             <Select name="type">
-              <SelectTrigger className="font-semibold text-b-accent">
+              <SelectTrigger className="text-base h-11 font-medium leading-[22px] text-b-accent">
                 <SelectValue placeholder="Property type" />
               </SelectTrigger>
               <SelectContent>
@@ -123,7 +124,7 @@ export function AdvanceSearchFilter() {
               </SelectContent>
             </Select>
             <Select name="bed">
-              <SelectTrigger className="font-semibold text-b-accent">
+              <SelectTrigger className="h-11 font-medium leading-[22px] text-b-accent text-base">
                 <SelectValue placeholder="Bedrooms" />
               </SelectTrigger>
               <SelectContent>
@@ -151,13 +152,15 @@ export function AdvanceSearchFilter() {
               </SelectContent>
             </Select> */}
 
-            <Price
+            <PriceInput
               title="Price range"
               unit="GH₵"
               placeholder={{ min: "Min.price", max: "Max.price" }}
+              range={siteConfig.priceRange}
+              className="min-w-full px-5 py-0 rounded-md"
             />
             <Popover>
-              <PopoverTrigger className="flex w-full items-center justify-between gap-2 rounded-md border px-3 py-2 h-10 text-sm font-semibold text-b-accent">
+              <PopoverTrigger className="flex h-11 font-medium leading-[22px] w-full items-center justify-between gap-2 border px-3 py-2  text-b-accent rounded-md">
                 More filters <Icons.filter className=" h-5 w-5" />
               </PopoverTrigger>
               <PopoverContent className="w-[400px] p-4">
@@ -282,18 +285,18 @@ export function AdvanceSearchFilter() {
               </PopoverContent>
             </Popover>
 
-            <Button type="submit" className="w-full rounded-md font-semibold ">
+            <Button type="submit" className="w-full rounded-md font-semibold  h-11">
               Update search
             </Button>
           </form>
         </aside>
       </Card>
 
-      <Card className="sticky top-[51px] z-40 p-4 md:hidden rounded-none border-0 border-b">
+      <Card className="sticky top-[51px] z-40 rounded-none border-0 border-b p-4 md:hidden">
         <FullscreenModal>
           <DialogTrigger className="w-full">
             <div
-              className="flex items-center gap-6 rounded-lg bg-[#F3F4F6] p-2"
+              className="flex items-center gap-6 bg-[#F3F4F6] p-2"
               role="button"
               tabIndex={0}
             >

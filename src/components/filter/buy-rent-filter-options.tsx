@@ -25,6 +25,7 @@ export function BuyRentFilterOptions({ isRentOpt }: { isRentOpt?: boolean }) {
         unit="GH₵"
         placeholder={{ min: "Min.price", max: "Max.price" }}
         className="h-[20px] border-none px-5 py-0 text-white"
+        range={siteConfig.priceRange}
       />
       {isRentOpt && (
         <>

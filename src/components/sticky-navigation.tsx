@@ -4,6 +4,7 @@ import React, { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import logoMin from "@/../public/meqasa-logo-minimize.png"
+import { motion } from "framer-motion"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -88,7 +89,12 @@ export default function StickyNavigation() {
   })
 
   return (
-    <div className=" insert-x-0 sticky-nav fixed top-0 z-50  hidden h-[60px] w-full animate-slide  items-center gap-8 border-b bg-background px-6 md:gap-10">
+    <motion.div
+      className=" insert-x-0 sticky-nav fixed top-0 z-50  hidden h-[60px] w-full items-center gap-8 border-b bg-background px-6 md:gap-10"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ ease: "easeOut", duration: 0.5 }}
+    >
       <Link href="/" className="flex items-center">
         <Image alt="logo" src={logoMin} className="h-full w-8 object-contain" />
       </Link>
@@ -96,7 +102,7 @@ export default function StickyNavigation() {
         <div className="flex grow">{navLink}</div>
         <NavigationStatus status={true} />
       </div>
-    </div>
+    </motion.div>
   )
 }
 
