@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-export default async function FeaturedProperty({
+export default function FeaturedProperty({
   property,
 }: {
   property: FeaturedPropertiesType
@@ -15,25 +15,25 @@ export default async function FeaturedProperty({
     property
 
   return (
-    <Card className="relative min-w-[320px] overflow-hidden rounded-2xl border-0 shadow">
+    <Card className="relative max-w-[500px]  overflow-hidden rounded-2xl border-0 shadow">
       <CardHeader className="h-[162px] overflow-hidden p-0 lg:h-[272px]">
         <Link href={`/developers/1/projects/1`} className="block no-underline">
           <Image
             className="object-cover"
-            width={554}
+            width={454}
             height={272}
             src={images[0]}
             alt={property.project}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(554, 272)
+              shimmer(454, 272)
             )}`}
             style={{
               width: "100%",
               height: "auto",
             }}
             priority
-            sizes="554px"
+            sizes="454px"
           />
         </Link>
       </CardHeader>
@@ -73,16 +73,14 @@ export default async function FeaturedProperty({
                 </div>
               </div>
               <div>
-                <Card className="size-[50px] lg:size-[70px] overflow-hidden  border-none shadow">
-                  <Image
-                    src={logo}
-                    alt={property.project}
-                    width={70}
-                    height={0}
-                    className="h-[50px] w-[50px] rounded-sm object-contain lg:h-[70px] lg:w-[70px]"
-                    sizes="70px"
-                  />
-                </Card>
+                <Image
+                  src={logo}
+                  alt={property.project}
+                  width={70}
+                  height={0}
+                  className="h-[50px] w-[50px] rounded-sm object-contain lg:h-[70px] lg:w-[70px]"
+                  sizes="70px"
+                />
               </div>
             </div>
           </Link>

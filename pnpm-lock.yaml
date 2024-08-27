@@ -71,9 +71,6 @@ dependencies:
   cmdk:
     specifier: ^1.0.0
     version: 1.0.0(@types/react-dom@18.0.0)(@types/react@18.0.0)(react-dom@18.0.0)(react@18.0.0)
-  embla-carousel:
-    specifier: ^8.0.1
-    version: 8.0.1
   embla-carousel-autoplay:
     specifier: ^8.0.1
     version: 8.0.1(embla-carousel@8.0.1)
@@ -142,6 +139,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.0.1
     version: 10.0.1(postcss@8.0.0)
+  embla-carousel:
+    specifier: ^8.0.1
+    version: 8.0.1
   eslint:
     specifier: ^8
     version: 8.0.0
@@ -2459,7 +2459,6 @@ packages:
 
   /embla-carousel@8.0.1:
     resolution: {integrity: sha512-RsaMRyBCd144N95gb3XoI+H9zj3RI4y0qcfvKYEh2tIAIEenL9CW9vwzltCeoYkWYipGdkvup+HGT9ewG1YTEw==}
-    dev: false
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
