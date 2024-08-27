@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card"
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-card"
 import { AgentLogoCarousel } from "@/components/agent-logo-carousel"
 import BannerGroup from "@/components/banner-group"
+import FeaturedProjectsCarousel from "@/components/featured-projects-carousel"
 import FeaturedProperty from "@/components/featured-property"
 import { SearchFilter } from "@/components/filter/search-filter"
 import { LayoutGrid } from "@/components/layout-grid"
@@ -250,18 +251,9 @@ export default async function Home() {
                 See all
               </Link>
             </div>
-            <div className="overflow-y-hidden overflow-x-scroll">
-              <div className="mt-4 grid grid-flow-col grid-cols-[0px_1fr_1fr_1fr_1fr_4px] gap-3 overflow-x-scroll lg:mt-8 lg:grid-flow-row lg:grid-cols-[repeat(2,minmax(0,1fr))] lg:gap-8">
-                <div className="mb-4 lg:hidden" />
-                {featuredProperties.map((property) => (
-                  <div className="mb-4 p-1.5" key={property.href}>
-                    {/* @ts-ignore */}
-                    <FeaturedProperty property={property} />
-                  </div>
-                ))}
-                <div className="mb-4 w-1 lg:hidden" />
-              </div>
-            </div>
+            <FeaturedProjectsCarousel featuredProperties={featuredProperties} delay={5000}/>
+            <div className="my-10 md:my-20"/>
+            <FeaturedProjectsCarousel featuredProperties={featuredProperties} delay={7000}/>
           </section>
 
           <section className="mt-8 w-full border-b pb-8 lg:mt-20 lg:border-0 lg:py-0 lg:pb-0 ">
@@ -311,7 +303,7 @@ export default async function Home() {
             </aside>
           </section>
 
-          <section className="mt-16 bg-slate-50 p-8  lg:py-10">
+          <section className="mt-16 bg-slate-50 lg:py-10">
             <div className="px-0 lg:mx-auto lg:max-w-[1400px]">
               <div className="grid grid-cols-[1fr_70px] items-center  justify-between gap-8 px-4 lg:p-0">
                 <h2 className="text-xl font-bold leading-tight tracking-tighter text-b-accent lg:text-[28px] lg:font-extrabold">

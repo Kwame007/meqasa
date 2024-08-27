@@ -28,7 +28,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   }
 
   return (
-    <div className="relative mx-auto grid h-[450px] w-full max-w-7xl  grid-cols-1 gap-4 md:grid-cols-2">
+    <div className="hidden relative mx-auto md:grid h-[450px] w-full max-w-7xl  grid-cols-1 gap-4 md:grid-cols-2">
       {cards.map((card, i) => (
         <div
           key={i}
