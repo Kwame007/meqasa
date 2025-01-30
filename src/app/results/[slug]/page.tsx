@@ -2,6 +2,7 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
+import { API_ENDPOINT } from "@/lib/utils"
 import { Card } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/bread-crumbs"
 import { PaginationDemo } from "@/components/pagination"
@@ -364,4 +365,32 @@ export default function ResultsPage() {
       </div>
     </>
   )
+}
+
+// Static Params for property pages
+export async function generateStaticParams() {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/projects`, {
+      next: {
+        revalidate: 60,
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch properties: ${response.statusText}`)
+    }
+
+    const properties = await response.json()
+
+    // Generate static params for each property
+    const t = properties.map((property: { id: string }) => ({
+      slug: property.id,
+    }))
+    console.log("logging from generateStaticParams slug", t)
+
+    return t
+  } catch (error) {
+    console.error("Error generating static params:", error)
+    return [] // Return an empty array in case of error
+  }
 }

@@ -205,7 +205,7 @@ export default async function Home() {
             >
               <Image
                 alt="Luxury Real Estate Property"
-                src="https://dve7rykno93gs.cloudfront.net/assets4/img/hero-image.jpg"
+                src="https://dve7rykno93gs.cloudfront.net/pieoq/840391369.webp"
                 fill
                 sizes="calc(100vw - 32px)"
                 className="object-cover"
@@ -223,21 +223,21 @@ export default async function Home() {
                 content: <div>test</div>,
                 className: "",
                 thumbnail:
-                  "https://dve7rykno93gs.cloudfront.net/pieoq/1072750400.webp",
+                  "https://dve7rykno93gs.cloudfront.net/pieoq/840391369.webp",
               },
               {
                 id: 2,
                 content: <div>test</div>,
                 className: "",
                 thumbnail:
-                  "https://dve7rykno93gs.cloudfront.net/pieoq/1027645745.webp",
+                  "https://dve7rykno93gs.cloudfront.net/pieoq/840391369.webp",
               },
               {
                 id: 3,
                 content: <div>test</div>,
                 className: "",
                 thumbnail:
-                  "https://dve7rykno93gs.cloudfront.net/pieoq/1093075785.webp",
+                  "https://dve7rykno93gs.cloudfront.net/pieoq/840391369.webp",
               },
             ]}
           />

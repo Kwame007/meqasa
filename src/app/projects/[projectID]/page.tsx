@@ -4,6 +4,7 @@ import site2 from "@/../public/plans/site-plan-2.jpeg"
 import site3 from "@/../public/plans/site-plan-3.jpeg"
 import { Dot, MapPin, ShieldCheck } from "lucide-react"
 
+import { API_ENDPOINT } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -378,4 +379,31 @@ export default async function page() {
       <ContactFixed />
     </div>
   )
+}
+
+// Static Params for property pages
+export async function generateStaticParams() {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/projects`, {
+      next: {
+        revalidate: 60,
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch properties: ${response.statusText}`)
+    }
+
+    const properties = await response.json()
+
+    // Generate static params for each property
+    const s = properties.map((property: { id: string }) => ({
+      projectID: property.id,
+    }))
+    console.log("logging from generateStaticParams project", s)
+    return s
+  } catch (error) {
+    console.error("Error generating static params:", error)
+    return [] // Return an empty array in case of error
+  }
 }

@@ -56,7 +56,10 @@ export default async function Page({
   async function getPropertyDetails(id: string): Promise<PropertyListing[]> {
     try {
       const response = await fetch(`${API_ENDPOINT}/listing?id=${id}`, {
-        cache: "no-store",
+        next: {
+          // revalidate after every hour
+          revalidate: 60,
+        },
       })
 
       if (!response.ok) {
@@ -576,4 +579,31 @@ function generateBadges(data: Badges, propertyMappings: PropertyMapping) {
         </Badge>
       )
     })
+}
+
+// Static Params for property pages
+export async function generateStaticParams() {
+  try {
+    const response = await fetch(`${API_ENDPOINT}/listing`)
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch properties: ${response.statusText}`)
+    }
+
+    const properties = await response.json()
+
+    // Log properties to debug the structure
+    // console.log("logging from generateStaticParams", properties)
+
+    // Generate static params for each property
+    const t = properties.map((property: { id: string }) => ({
+      propertyID: property.id, // Ensure 'id' is the correct field name
+    }))
+    console.log("logging from generateStaticParams", t)
+
+    return t
+  } catch (error) {
+    console.error("Error generating static params:", error)
+    return [] // Return an empty array in case of error
+  }
 }

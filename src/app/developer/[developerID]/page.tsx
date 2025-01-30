@@ -44,10 +44,13 @@ export async function generateStaticParams() {
   const developersData: Promise<DeveloperType[]> = getAllDevelopers()
   const developers = await developersData
 
-  return developers.map((developer) => ({
+  const s = developers.map((developer) => ({
     // always a string
     developerID: developer.id,
   }))
+
+  console.log("logging from generateStaticParams developer", s)
+  return s
 }
 
 export default async function page({ params: { developerID } }: Params) {
@@ -178,7 +181,10 @@ export default async function page({ params: { developerID } }: Params) {
             <Card className="w-fit rounded-xl border-orange-400 p-3 text-b-accent">
               <h4 className="font-semibold">Address</h4>
               <p className="flex items-center">
-                <MapPin className="mr-2 text-primary h-5 w-5" strokeWidth="1.3" />{" "}
+                <MapPin
+                  className="mr-2 h-5 w-5 text-primary"
+                  strokeWidth="1.3"
+                />{" "}
                 Kanda Estates, Ghana
               </p>
             </Card>
@@ -204,7 +210,7 @@ function TabsDemo({ completedProjects, currentProjects, units }: ProjectsType) {
       <TabsList className="grid h-[60px] w-full grid-cols-3 px-2">
         <TabsTrigger
           value="current"
-          className="group h-11 text-sm data-[state=active]:text-b-accent text-b-muted"
+          className="group h-11 text-sm text-b-muted data-[state=active]:text-b-accent"
         >
           Current Projects{" "}
           <span className="ml-2 hidden h-6 w-6 items-center justify-center rounded-lg bg-primary font-semibold text-white opacity-0 shadow-subtle transition-opacity duration-200 ease-in group-data-[state=active]:opacity-100 lg:flex">
@@ -213,7 +219,7 @@ function TabsDemo({ completedProjects, currentProjects, units }: ProjectsType) {
         </TabsTrigger>
         <TabsTrigger
           value="available"
-          className="group h-11 text-sm data-[state=active]:text-b-accent text-b-muted"
+          className="group h-11 text-sm text-b-muted data-[state=active]:text-b-accent"
         >
           Available Units{" "}
           <span className="ml-2 hidden h-6 w-6 items-center justify-center rounded-lg bg-primary font-semibold text-white opacity-0 shadow-subtle transition-opacity duration-200 ease-in group-data-[state=active]:opacity-100 lg:flex">
@@ -222,7 +228,7 @@ function TabsDemo({ completedProjects, currentProjects, units }: ProjectsType) {
         </TabsTrigger>
         <TabsTrigger
           value="past"
-          className="group h-11 text-sm data-[state=active]:text-b-accent text-b-muted"
+          className="group h-11 text-sm text-b-muted data-[state=active]:text-b-accent"
         >
           Past Projects{" "}
           <span className="ml-2 hidden h-6 w-6 items-center justify-center rounded-lg bg-primary font-semibold text-white opacity-0 shadow-subtle transition-opacity duration-200 ease-in group-data-[state=active]:opacity-100 lg:flex">
